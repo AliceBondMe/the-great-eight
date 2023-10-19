@@ -1,0 +1,1 @@
+// Даний файл робить експорт функції createFavoritesMarkup()
