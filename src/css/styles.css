@@ -53,12 +53,12 @@
 
 :root {
   font-family: 'Neue Montreal', Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   font-weight: 400;
 
   color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  background-color: #F4F4F4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
