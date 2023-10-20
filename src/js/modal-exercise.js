@@ -1,3 +1,8 @@
+serviceWorkoutSearch("64f389465ae26083f39b184c")
+    .then((data) =>{_id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity})
+
+
+
 const refs = {
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
