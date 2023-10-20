@@ -1,0 +1,21 @@
+.modal-rating {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-rating-star {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(244, 244, 244, 0.2);
+  }
+  
+  .modal-rating-star-active {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color:rgba(238, 161, 12, 1);
+    ;
+  }

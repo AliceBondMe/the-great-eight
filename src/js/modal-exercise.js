@@ -17,3 +17,18 @@ const refs = {
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
   }
+
+
+
+  const rating = document.querySelector(".rating");
+
+rating.addEventListener("click", (event) => {
+  const star = event.target;
+  const ratingValue = star.getAttribute("data-rating");
+
+  // Змінити стиль зірки
+  star.style.backgroundColor = "red";
+
+  // Обновити рейтинг
+  rating.querySelector(".rating-value").textContent = ratingValue;
+});
