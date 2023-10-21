@@ -1,0 +1,181 @@
+.workout-section {
+	max-width: 335px;
+	background-color: rgb(133, 129, 129);
+}
+
+@media (min-width: 768px) {
+	.workout-section {
+	max-width: 344px;			
+		}
+}
+
+@media (min-width: 1198px) {
+	.workout-section {
+		max-width: 442px;
+	}
+}
+.workout-container {
+padding: 16px;
+display: flex;
+flex-direction: column;
+border-radius: 15px;
+background: #FFF;
+gap: 20px;
+}
+
+@media (min-width: 768px) {
+.workout-container {
+display: flex;
+min-width: 800px;
+}
+}
+
+
+/* @media (min-width: 768px) {
+	.rating_list {
+			display: flex;
+			gap: 20px;
+			flex-wrap: wrap;
+		}
+			.rating_item {
+				width: calc(50% - 10px);
+					   }
+} */
+
+
+.rating_item {
+display: flex;
+flex-direction: column;
+gap: 27px;
+}
+
+@media (min-width: 768px) {
+	.rating_item {
+			width: calc((100% - 16px) / 2);
+				height: 141px;
+				max-width: 344px;
+	}
+}
+
+
+
+.rating-title {
+	color: #242424;
+	font-weight: 500;
+	border-radius: 15px;
+	border: 1px solid #242424;
+padding: 5px 7.5px;
+margin-right: 16px;
+
+
+	
+
+}
+.rating_item_wrap {
+display: inline-flex;
+align-items: center;
+
+/* justify-content: space-between; */
+	
+}
+
+
+.rating-info {
+	display: flex;
+	align-items: center;
+}
+
+.rating-stars::before {
+	content: "★";
+	display: inline-block;
+	margin-right: 8px;
+	color: #EEA10C;
+}
+
+.simple-rating-items {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.simple-rating-item {
+	position: absolute;
+	width: 0%;
+	height: 0%;
+	opacity: 0;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+}
+
+.simple-rating-label {
+	height: 100%;
+	cursor: pointer;
+}
+
+.icon-runner {
+	stroke: black;
+}
+
+.workout-description {
+	display: flex;
+
+}
+
+
+.icon-wrapper {
+display: flex;
+	gap: 16px;
+}
+
+
+
+
+.workout-description {
+		display: flex;
+			gap: 8px;
+		}
+
+
+.description-dark {
+color: #242424;
+font-size: 10px;
+}
+
+.description-dark:not(:last-child) {
+margin-right: 10px;
+}
+
+.description-light {
+	color: rgba(36, 36, 36, 0.40);
+	font-size: 12px;
+		line-height: 150%; /* 18/12 */
+}
+
+
+
+.icon-circle {
+	background-color: black;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.icon-runner {
+	fill: white;
+	width: 20px;
+	height: 20px;
+}
+
+
+.workout_arrow {
+display: flex;
+margin-left: auto;
+gap: 8px;
+}
