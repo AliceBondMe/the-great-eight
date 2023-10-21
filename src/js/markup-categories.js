@@ -1,11 +1,8 @@
 // Даний файл робить експорт функції createCategoriesMarkup()
 
-// const catGallery = document.querySelector('.js-categories-gallery');
-
 function createMarkupOptions(data) {
-  const option = data
-    .map(
-      ({ filter, name, imgURL }) => `
+  return data.map(
+    ({ filter, name, imgURL }) => `
   <li class="categories-item">
     <div class="categories-photo-container">
       <a class="categories-gradient" href="#">     
@@ -23,9 +20,7 @@ function createMarkupOptions(data) {
      </div>
     </div>
   </li>`
-    )
-    .join('');
-  // catGallery.insertAdjacentHTML('beforeend', option);
+  );
 }
 
 export { createMarkupOptions };
