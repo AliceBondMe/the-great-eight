@@ -1,6 +1,57 @@
 <!-- Всі класи в даному файлі мають розпочинатись з raiting-->
 <div class="backdrop is-hidden" data-raiting>
     <div class="raiting">
-        <p>raiting</p>
+        <button type="button" class="raiting-btn-close" raiting-modal-close>
+            <svg width="24" height="24" class="raiting-close-icon">
+                <use href="../img/symbol-defs.svg#icon-x"></use>
+            </svg>
+        </button>
+
+        <span class="rating-number">0.0</span>
+        <fieldset class="rating-container">
+            <input type="radio" name="rating" id="rate5" class="rating-radio">
+            <label for="rate5" class="rating-label">
+                <svg width="24" height="24" class="rating-star">
+                    <use href="../img/symbol-defs.svg#icon-star"></use>
+                </svg>
+            </label>
+            <input type="radio" name="rating" id="rate4" class="rating-radio">
+            <label for="rate4" class="rating-label">
+                <svg width="24" height="24" class="rating-star">
+                    <use href="../img/symbol-defs.svg#icon-star"></use>
+                </svg>
+            </label>
+            <input type="radio" name="rating" id="rate3" class="rating-radio">
+            <label for="rate3" class="rating-label">
+                <svg width="24" height="24" class="rating-star">
+                    <use href="../img/symbol-defs.svg#icon-star"></use>
+                </svg>
+            </label>
+            <input type="radio" name="rating" id="rate2" class="rating-radio">
+            <label for="rate2" class="rating-label">
+                <svg width="24" height="24" class="rating-star">
+                    <use href="../img/symbol-defs.svg#icon-star"></use>
+                </svg>
+            </label>
+            <input type="radio" name="rating" id="rate1" class="rating-radio">
+            <label for="rate1" class="rating-label">
+                <svg width="24" height="24" class="rating-star">
+                    <use href="../img/symbol-defs.svg#icon-star"></use>
+                </svg>
+            </label>
+        </fieldset>
+        <h3 class="raiting-title">Rating</h3>
+        <form class="raiting-form" autocomplete="off">
+
+            <label class="raiting-email">
+                Email
+                <input type="email" name="email" autofocus required/>
+            </label>
+            <label class="raiting-comment">
+                Your comment
+                <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button type="submit" class="raiting-btn-submit">Send</button>
+        </form>
     </div>
 </div>
