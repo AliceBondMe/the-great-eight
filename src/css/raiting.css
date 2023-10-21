@@ -1,10 +1,36 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity var(--transition), visibility var(--transition);
+    overflow-y: scroll;
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
 .rating {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0) scale(1);
     position: relative;
     padding: 40px 20px 40px 20px;
-    max-width: 100%;
+    max-width: 335px;
     height: 357px;
     border-radius: 20px;
     background-color: #242424;
+    transition: transform var(--transition);
 }
 
 .rating-btn-close {
@@ -12,8 +38,6 @@
     padding: 0;
     right: 14px;
     top: 14px;
-    width: 24px;
-    height: 24px;
     border: none;
     background-color: inherit;
     stroke: #F4F4F4;
@@ -34,7 +58,7 @@
     color: rgba(244, 244, 244, 0.40);
     font-size: 12px;
     line-height: 1.5;
-    margin-bottom: 11px;
+    margin-bottom: 10px;
 }
 
 .rating-wrap {
@@ -146,6 +170,11 @@
     background-color: transparent;
 }
 
+.rating-number:before {
+    content: "0.0";
+    vertical-align: middle;
+}
+
 #rate1:checked~.rating-number:before,
 #rate1:hover~.rating-number:before,
 #rate1:focus~.rating-number:before {
@@ -174,4 +203,47 @@
 #rate5:hover~.rating-number:before,
 #rate5:focus~.rating-number:before {
     content: "5.0";
+}
+
+
+@media (min-width: 768px) {
+    .rating {
+        padding: 40px;
+        max-width: 430px;
+        height: 412px;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+
+    .rating-btn-close svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .rating-wrap {
+        margin-bottom: 28px;
+    }
+
+    .rating-email {
+        height: 48px;
+        margin-bottom: 16px;
+    }
+
+    .rating-comment {
+        height: 106px;
+        margin-bottom: 32px;
+    }
+
+    .rating-email::placeholder,
+    .rating-comment::placeholder {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .rating-btn-submit {
+        height: 48px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
 }
