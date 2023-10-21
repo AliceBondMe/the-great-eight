@@ -22,6 +22,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.rating-btn-close:hover,
+.rating-btn-close:focus {
+    transform: rotate(90deg);
 }
 
 .rating-title {
@@ -33,6 +39,7 @@
 
 .rating-wrap {
     display: flex;
+    gap: 2px;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -41,11 +48,13 @@
     color: #F4F4F4; 
     font-size: 12px;
     line-height: 1.5;
+    width: 18px;
 }
 
 .rating-container {
     display: flex;
     flex-direction: row-reverse;
+    gap: 2px;
     justify-content: left;
     border: none;
     padding: 0;
@@ -63,109 +72,106 @@
 
 .rating-radio:checked~.rating-label .rating-star {
     fill: #EEA10C;
-    transform: scale(1.1) rotate(10deg);
 }
 
 .rating-radio:hover~.rating-label .rating-star{
     fill: #EEA10C;
-    transform: scale(1.1) rotate(10deg);
+    transform: scale(1.1);
 }
 
-/* label:hover {
-
-    svg,
-    ~label svg {
-        opacity: 1;
-        transform: scale(1.25) rotate(10deg);
-    }
+.rating-email,
+.rating-comment {
+    color: rgba(244, 244, 244, 0.60);
+    width: 100%;
+    padding: 12px 14px;
+    background-color: transparent;
+    border: 1px solid #F4F4F4;
+    background-color: transparent;  
 }
 
-input:checked {
-    +label:hover svg {
-        opacity: 1;
-    }
-
-    ~label:hover {
-
-        svg,
-        ~label svg {
-            opacity: 1;
-        }
-    }
+.rating-email {
+    border-radius: 30px;
+    margin-bottom: 10px;
 }
 
-label:hover~input:checked~label svg {
-    opacity: 1;
+.rating-comment {
+    border-radius: 15px;
+    resize: none;
+    height: 93px;
+    margin-bottom: 20px;
 }
 
-#rate1:checked~.rating-value:before {
-    content: "1";
-    font-size: 2.75em;
+.rating-comment::-webkit-scrollbar {
+    width: 4px;
 }
 
-label[for="rate1"]:hover~.rating-value:before {
-    content: "1" !important;
-    font-size: 2.75em !important;
+.rating-comment::-webkit-scrollbar-track {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
-#rate2:checked~.rating-value:before {
-    content: "2";
-    font-size: 3em;
+.rating-comment::-webkit-scrollbar-thumb {
+    background-color: #F4F4F4;
+    outline: none;
+    border-radius: 4px;
 }
 
-label[for="rate2"]:hover~.rating-value:before {
-    content: "2" !important;
-    font-size: 3em !important;
+.rating-email::placeholder,
+.rating-comment::placeholder {
+    color: rgba(244, 244, 244, 0.60);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.29; /* 128.571% */
 }
 
-#rate3:checked~.rating-value:before {
-    content: "3";
-    font-size: 3.25em;
+.rating-btn-submit {
+    width: 100%;
+    height: 42px;
+    padding: 12px;
+    color: #242424;
+    font-family: Neue Montreal;
+    line-height: 1.29; /* 128.571% */
+    border: none;
+    border-radius: 30px;
+    background-color: #F4F4F4;
+    transition: background-color var(--transition);
 }
 
-label[for="rate3"]:hover~.rating-value:before {
-    content: "3" !important;
-    font-size: 3.25em !important;
+.rating-btn-submit:hover,
+.rating-btn-submit:focus {
+    color: #F4F4F4;
+    border: 1px solid #F4F4F4;
+    background-color: transparent;
 }
 
-#rate4:checked~.rating-value:before {
-    content: "4";
-    font-size: 3.5em;
+#rate1:checked~.rating-number:before,
+#rate1:hover~.rating-number:before,
+#rate1:focus~.rating-number:before {
+    content: "1.0";
 }
 
-label[for="rate4"]:hover~.rating-value:before {
-    content: "4" !important;
-    font-size: 3.5em !important;
+#rate2:checked~.rating-number:before,
+#rate2:hover~.rating-number:before,
+#rate2:focus~.rating-number:before {
+    content: "2.0";
 }
 
-#rate5:checked~.rating-value:before {
-    content: "5";
-    font-size: 3.75em;
+#rate3:checked~.rating-number:before,
+#rate3:hover~.rating-number:before,
+#rate3:focus~.rating-number:before {
+    content: "3.0";
 }
 
-@keyframes pulse {
-    0% {
-        height: 138px;
-        width: 138px;
-        top: -1px;
-        left: -1px;
-        opacity: 1;
-    }
-
-    100% {
-        height: 170px;
-        width: 170px;
-        top: -16px;
-        left: -16px;
-        opacity: 0;
-    }
+#rate4:checked~.rating-number:before,
+#rate4:hover~.rating-number:before,
+#rate4:focus~.rating-number:before {
+    content: "4.0";
 }
 
-#rate5:checked~.rating-value:after {
-    animation: pulse 0.4s ease-out 1;
+#rate5:checked~.rating-number:before,
+#rate5:hover~.rating-number:before,
+#rate5:focus~.rating-number:before {
+    content: "5.0";
 }
-
-label[for="rate5"]:hover~.rating-value:before {
-    content: "5" !important;
-    font-size: 3.75em !important;
-} */

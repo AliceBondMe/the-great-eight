@@ -9,7 +9,6 @@
 
         <h3 class="rating-title">Rating</h3>
         <div class="rating-wrap">
-            <span class="rating-number">0.0</span>
             <fieldset class="rating-container">
                 <input type="radio" name="rating" id="rate5" class="rating-radio">
                 <label for="rate5" class="rating-label">
@@ -41,17 +40,18 @@
                         <use href="../img/symbol-defs.svg#icon-star"></use>
                     </svg>
                 </label>
+            <span class="rating-number"></span>
             </fieldset>
         </div>
-        <form class="raiting-form" autocomplete="off">
+        <form class="rating-form" autocomplete="off">
 
-            <label class="raiting-email">
-                <input type="email" name="email" placeholder="Email" required/>
+            <label>
+                <input type="email" name="email" placeholder="Email" class="rating-email" required/>
             </label>
-            <label class="raiting-comment">
-                <textarea name="message" rows="4" placeholder="Your comment"></textarea>
+            <label>
+                <textarea name="message" rows="4" maxlength="250" placeholder="Your comment" class="rating-comment" required></textarea>
             </label>
-            <button type="submit" class="raiting-btn-submit">Send</button>
+            <button type="submit" class="rating-btn-submit">Send</button>
         </form>
     </div>
 </div>
