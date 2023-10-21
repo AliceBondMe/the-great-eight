@@ -1,0 +1,150 @@
+.header {
+  padding-top: 20px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  height: 24px;
+}
+.header-logo-img {
+  fill: #242424;
+  width: 132px;
+}
+.header-pages {
+  display: none;
+}
+.header-social {
+  display: none;
+}
+.header-burger {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  height: 32px;
+}
+.header-burger-img {
+  stroke: #242424;
+}
+.header-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: var(--basic-dark);
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: right;
+}
+.header-menu.is-open {
+  transform: translateX(0);
+}
+.header-menu-closed-btn {
+  stroke: var(--basic-light);
+  background-color: transparent;
+  border: none;
+}
+.header-mob-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 40px);
+}
+.header-mob-wrap-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+}
+.header-mob-wrap-pages-item-link {
+  color: var(--basic-light);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  line-height: 1.28;
+}
+.header-mob-wrap-social {
+  display: flex;  
+  gap: 12px;
+  justify-content: center;
+}
+.header-mob-wrap-social-item-link {
+  display: block;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  fill: #CACACA;
+  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1),  fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-mob-wrap-social-item-link:hover, .header-mob-wrap-social-item-link:focus {
+  background-color: var(--basic-light);
+  fill: #4E4E4E;
+}
+@media (min-width: 768px) {
+  .header {
+    padding-top: 24px;
+  }
+  .header-pages {
+    display: flex;
+    padding: 14px 36px;
+    border-radius: 60px;
+    background-color: var(--basic-dark);
+    gap: 7px;
+  }
+  .header-pages-item-link {
+    color: var(--basic-light);
+    font-family: Neue Montreal;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 6px 12px;
+    border-radius: 30px;
+  }
+  .header-pages-active {
+    background-color: var(--basic-light);
+    color: var(--basic-dark);
+  }
+  .header-social {
+    display: flex;
+    gap: 10px;
+  }
+  .header-social-item-link {
+    display: block;
+    border-radius: 10px;
+    border: 1px solid rgba(36, 36, 36, 0.1);
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    fill: #4E4E4E;
+    transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  }
+  
+  .header-social-item-link:hover, .header-social-item-link:focus {
+    background-color: rgba(36, 36, 36, 0.8);
+    fill: var(--basic-light);
+  }
+  .header-burger {
+    display: none;
+  }
+}
+@media (min-width: 1440px) {
+  .header {
+    padding-top: 28px;
+  }
+  .header-pages {
+    padding: 14px 52px;
+  }
+  .header-social {
+    gap: 12px;
+  }
+}
