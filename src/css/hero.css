@@ -25,7 +25,8 @@
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.8px;
-  margin-bottom: 20px;
+  margin-bottom: 17px;
+  padding-bottom: 3px;
 }
 
 .hero-title > span {
