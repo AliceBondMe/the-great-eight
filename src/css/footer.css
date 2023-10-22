@@ -95,7 +95,7 @@
 .footer-btn-email {
   margin-top: 20px;
   display: flex;
-  padding: 12px 148px;
+  padding: 12px 0;
   justify-content: center;
   align-items: center;
   gap: 8px;
