@@ -4,11 +4,11 @@ export function createworkoutsMarkup(arr) {
    return arr
     .map(
        ({_id, bodyPart, name, target, rating, burnedCalories}) =>
-   `<li class="workouts_item" data-id="${_id}">
+   `<li class="workouts_item js-workout-card" data-id="${_id}">
       <div class="rating_item_wrap">
          <h1 class="workouts-title">workout</h1>
          <div class="workouts-info">
-            <div class="rating">${rating}</div>
+            <div class="workouts-rating">${rating}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
                   <svg width="18" height="18">

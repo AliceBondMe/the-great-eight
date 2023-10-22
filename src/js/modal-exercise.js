@@ -1,82 +1,133 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector("[data-modal-open]"),
-    closeModalBtn: document.querySelector("[data-modal-close]"),
-    modal: document.querySelector("[data-modal]"),
-    backDrop: document.querySelector(".body"),
-  };
+import { serviceWorkoutSearch } from "./api-service";
+import Notiflix from "notiflix";
 
-  refs.openModalBtn.addEventListener("click", startModal);
-  refs.closeModalBtn.addEventListener("click", stopModal);
+const notiflixParams = {
+    width: '320px',
+    position: 'center-center',
+    fontSize: '16px',
+    cssAnimationStyle: 'from-bottom',
+    backOverlay: true,
+    useIcon: false,
+    failure: {
+        background: '#242424',
+        textColor: '#F4F4F4',
+    },
+    success: {
+        background: '#F4F4F4',
+        textColor: '#242424',
+    },
+};
 
-  function startModal() {
-    refs.modal.classList.toggle("is-hidden");
-    document.body.style.overflow = "hidden";
-  }
-  function stopModal() {
-    refs.modal.classList.toggle("is-hidden");
-    document.body.style.overflow = "";
-  }
-})();
-const data = {
-  "_id": "64f389465ae26083f39b17a4",
-  "bodyPart": "waist",
-  "equipment": "body weight",
-  "gifUrl": "https://ftp.goit.study/img/power-pulse/gifs/0003.gif",
-  "name": "air bike",
-  "target": "abs",
-  "description": "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",
-  "rating": 4.44,
-  "burnedCalories": 312,
-  "time": 3,
-  "popularity": 529
+const refs = {
+  openExerciseModalBtn: document.querySelector("[data-modal-open]"),
+  closeExerciseModalBtn: document.querySelector("[data-modal-close]"),
+  addToFavoriteBtn: document.querySelector(".modal-favorites-add"),
+  exerciseModal: document.querySelector("[data-modal"),
+  modal: document.querySelector(".modal"),
+  stars: document.querySelectorAll(".modal-icon-star"),
+  ratingValue: document.querySelector(".modal-rating-value"),
+  modalExerciseName: document.querySelector(".modal-exercise-name"),
+  modalRatingValue: document.querySelector(".modal-rating-value"),
+  modalRating: document.querySelector(".modal-rating"),
+  modalTarget: document.querySelector(".modal-target"),
+  modalBodyPart: document.querySelector(".modal-bodyPart"),
+  modalEquipment: document.querySelector(".modal-equipment"),
+  modalPopularity: document.querySelector(".modal-popularity"),
+  modalBurnedCalories: document.querySelector(".modal-burnedCalories"),
+  modalDescriptionText: document.querySelector(".modal-description-text"),
+  modalGif: document.querySelector(".modal-gif"),
+};
+
+const lsKeyFavorites = "favorites";
+let favoriteObj = {};
+let arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
+let idxInLsArray = -1;
+let exerciseId;
+
+refs.openExerciseModalBtn.addEventListener("click", openExerciseModal); 
+refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
+
+export function openExerciseModal() {
+  refs.exerciseModal.classList.remove("is-hidden");
+  
+
+  exerciseId = refs.openExerciseModalBtn.closest(".js-workout-card").dataset.id;
+
+  let isFavorite = checkLsForId(exerciseId);
+
+  serviceWorkoutSearch(exerciseId)
+    .then(({ _id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity }) => {
+      refs.modal.dataset.id = _id;
+      refs.modalExerciseName.textContent = name;
+      refs.modalRatingValue.textContent = Math.round(rating*10)/10;
+      refs.modalTarget.textContent = target;
+      refs.modalBodyPart.textContent = bodyPart;
+      refs.modalEquipment.textContent = equipment;
+      refs.modalPopularity.textContent = popularity;
+      refs.modalBurnedCalories.textContent = `${burnedCalories}/3 min`;
+      refs.modalDescriptionText.textContent = description;
+      refs.modalGif.src = gifUrl;
+
+      const numberOfStars = Math.round(refs.modalRatingValue.textContent);
+      for (let i = 0; i < numberOfStars; i+=1) {
+        refs.stars[i].style.fill = "rgba(238, 161, 12, 1)";
+      }
+
+      favoriteObj = {
+        id: _id,
+        bodyPart: bodyPart,
+        equipment: equipment,
+        gifUrl: gifUrl,
+        name: name,
+        target: target,
+        description: description,
+        rating: rating,
+        burnedCalories: burnedCalories,
+        popularity: popularity,
+      }
+
+      refs.addToFavoriteBtn.addEventListener("click", () => {
+        isFavorite = checkLsForId(exerciseId);
+        if (!isFavorite) {
+          addToFavorite();
+        } else {
+          removeFromFavorite();
+      }
+      })
+      
+      
+    })
+    .catch((error) => {
+      Notiflix.Notify.failure("Something went wrong. Please try again later.", notiflixParams);
+      closeExerciseModal();
+    });
+};
+
+export function closeExerciseModal() {
+    refs.exerciseModal.classList.add("is-hidden");
+};
+
+function addToFavorite() {
+  arrayFromLs.push(favoriteObj);
+  localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
+  checkLsForId(exerciseId);
 }
 
+function removeFromFavorite() {
+  console.log(arrayFromLs);
+  arrayFromLs.splice(idxInLsArray, 1);
+  localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
+  checkLsForId(exerciseId);
+}
 
-const modalExerciceName=document.querySelector(".modal-exercise-name");
-const modalRatingValue=document.querySelector(".modal-rating-value");
-const modalRating = document.querySelector(".modal-rating");
-const modalTarget = document.querySelector(".modal-target");
-const modalBodyPart = document.querySelector(".modal-bodyPart");
-const modalEquipment = document.querySelector(".modal-equipment");
-const modalPopularity = document.querySelector(".modal-popularity");
-const modalBurnedCalories = document.querySelector(".modal-burnedCalories");
-const modalDescriptionText = document.querySelector(".modal-description-text");
-const modalFavoritiesToogle = document.querySelector(".modal-favorities-toogle");
-
-modalExerciceName.textContent=data.name;
-modalRatingValue.textContent=Math.round(data.rating *10)/10;
-modalTarget.textContent=data.target;
-modalBodyPart.textContent=data.bodyPart;
-modalEquipment.textContent=data.equipment;
-modalPopularity.textContent=data.popularity;
-modalBurnedCalories.textContent=data.burnedCalories;
-modalDescriptionText.textContent=data.description;
-modalFavoritiesToogle.addEventListener("click",FavoritiesToogle);
-
-
-
-
-const ratingValue = modalRating.querySelector(".modal-rating-value").textContent;
-
-// Визначаємо кількість зірок, які потрібно відобразити
-const numberOfStars = Math.round(ratingValue);
-// const fractionStar = data.rating % 1;
-
-// Відображаємо зірки
-const starring = modalRating.querySelector(".starring");
-for (let i = 0; i < numberOfStars; i++) {
-  const star = starring.querySelector(`.modal-rating-star[data-value="${i + 1}"]`);
-  star.querySelector(".modal-icon-star").classList.remove("inactive");
-  star.querySelector(".modal-icon-star").classList.add("modal-icon-star");}
-
-//   star=starring.querySelector(`.modal-rating-star[data-value="${numberOfStars}"]`);
-//   console.dir(star);
-//   const fractedStar=star.querySelector(".modal-icon-star");
-// fractedStar.style.fill = "linear-gradient(to right, rgba(238, 161, 12, 1) 30%, rgba(244, 244, 244, 0.2) 70%)"
-
-
-
-function FavoritiesToogle (event){
-
-};
+function checkLsForId(exerciseId) {
+  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites));
+  idxInLsArray = arrayFromLs.findIndex(({ id }) => id === exerciseId);
+  if (idxInLsArray === -1) {
+    refs.addToFavoriteBtn.textContent = "Add to favorites";
+    return false;
+  } else {
+    refs.addToFavoriteBtn.textContent = "Remove from favorites";
+    return true;
+  }
+}

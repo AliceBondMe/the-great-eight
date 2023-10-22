@@ -1,5 +1,6 @@
 // Коли буде картка товару - замінити кнопку на відкриття рейтингу
-import axios from "axios";
+import { openExerciseModal } from "./modal-exercise";
+import { closeExerciseModal } from "./modal-exercise";
 import { serviceRatingAdd } from "./api-service";
 import Notiflix from "notiflix";
 
@@ -29,13 +30,13 @@ const refs = {
 };
 
 
-refs.openRatingModalBtn.addEventListener("click", toggleRatingModal); 
-refs.closeRatingModalBtn.addEventListener("click", toggleRatingModal);
+refs.openRatingModalBtn.addEventListener("click", openRatingModal); 
+refs.closeRatingModalBtn.addEventListener("click", closeRatingModal);
 refs.ratingForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(evt) {
     evt.preventDefault();
-    const workoutId = refs.openRatingModalBtn.closest(".ex-mod").dataset.id;
+    const workoutId = refs.openRatingModalBtn.closest(".modal").dataset.id;
     const checkedStar = [...refs.ratingStars].find((star) => star.checked);
     const { email, message } = evt.currentTarget.elements;
     if (email.value.trim() === "" || message.value.trim() === "" || !checkedStar ) {
@@ -60,10 +61,16 @@ function handleSubmit(evt) {
         .finally(() => {
             refs.ratingForm.reset();
             checkedStar.checked = false;
-            toggleRatingModal();
+            closeRatingModal();
         })
 }
 
-function toggleRatingModal() {
-    refs.ratingModal.classList.toggle("is-hidden");
+function openRatingModal() {
+    refs.ratingModal.classList.remove("is-hidden");
+    closeExerciseModal();
+};
+
+function closeRatingModal() {
+    refs.ratingModal.classList.add("is-hidden");
+    openExerciseModal();
 };
