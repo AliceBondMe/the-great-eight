@@ -2,21 +2,27 @@
   display: none;
 }
 
-.exercises {
-  margin-top: 100px;
-  margin-bottom: 100px; /*! Delete margins, it's just for test!*/
-}
-
 .exercises-header {
   font-size: 28px;
   font-weight: 400;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.exercises-header-div {
+  display: flex;
+  gap: 8px;
+}
+
+.exercises-point {
+  font-size: 20px;
+  color: rgba(36, 36, 36, 0.5);
 }
 
 .exercises-upper-div {
 }
 
 .exercises-input-div {
-  margin-top: 40px;
+  margin-top: 20px;
   position: relative;
 }
 
@@ -63,7 +69,7 @@
   display: flex;
   gap: 20px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .exercises-categories-btn {
@@ -110,9 +116,11 @@
 
 .exercises-pages-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .exercises-pages-button {
@@ -148,11 +156,18 @@
 /*? ---------------TABLET----------------- */
 
 @media (min-width: 768px) {
+  .exercises-header {
+    margin-bottom: 0px;
+  }
   .exercises-filter-div {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .exercises-categories-list {
+    margin: 0;
   }
   .exercises-filter-search-input {
     width: 271px;
@@ -176,12 +191,13 @@
 /*? ---------------DESKTOP ----------------*/
 @media (min-width: 1440px) {
   .exercises-filter-div {
-    margin-top: 0;
+    margin: 0;
   }
   .exercises-upper-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 32px;
   }
   .exercises-filter-div {
     gap: 32px;
