@@ -1,4 +1,4 @@
-import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-eb051c6a.js";function hr(m){return m.map(({filter:A,name:s,imgURL:E})=>`
+import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-ada04a0d.js";function hr(m){return m.map(({filter:A,name:s,imgURL:E})=>`
   <li class="categories-item">
     <div class="categories-photo-container">
       <a class="categories-gradient" href="#">     
@@ -15,11 +15,11 @@ import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-eb051c6a.js";f
       <p class="categories-info-filter">${A}</p>
      </div>
     </div>
-  </li>`).join("")}function Ke(m){return m.map(({_id:A,bodyPart:s,name:E,target:En,rating:oe,burnedCalories:fn})=>`<li class="workouts_item" data-id="${A}">
+  </li>`).join("")}function Ke(m){return m.map(({_id:A,bodyPart:s,name:E,target:En,rating:oe,burnedCalories:fn})=>`<li class="workouts_item js-workout-card" data-id="${A}">
       <div class="rating_item_wrap">
          <h1 class="workouts-title">workout</h1>
          <div class="workouts-info">
-            <div class="rating">${oe}</div>
+            <div class="workouts-rating">${oe}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
                   <svg width="18" height="18">

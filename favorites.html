@@ -10,9 +10,8 @@
     integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <script type="module" crossorigin src="/the-great-eight/assets/favorites-fd4be2fe.js"></script>
-  <link rel="modulepreload" crossorigin href="/the-great-eight/assets/modal-rating-eb051c6a.js">
-  <link rel="stylesheet" href="/the-great-eight/assets/modal-rating-8eec9ecb.css">
+  <script type="module" crossorigin src="/the-great-eight/assets/modal-rating-ada04a0d.js"></script>
+  <link rel="stylesheet" href="/the-great-eight/assets/modal-rating-51185fca.css">
 </head>
 
 <body>
@@ -26,66 +25,91 @@
     </section>
   </main>
 
-  
+  <!-- Це потім видалити, дані для тестування модалки вправи -->
+<ul class="ex-list">
+  <li class="js-workout-card" data-id="64f389465ae26083f39b197b">
+    <button type="button" data-modal-open>Test Exercise Modal</button>
+  </li>
+</ul>
+<!--  -->
+
 <div class="backdrop is-hidden" data-modal>
-  <div class="modal">
-      <button class="modal-x-button" data-modal-close type="button">
-          <svg class="modal-icon-x" width="24px"  height= "24px">
-            <use href="./images/symbol-defs.svg#icon-x" ></use>
-          </svg>
-        </button>
-        <div class="modal-section">
-<img class="modal-gif" src="./images/gif.jpg" alt="exercise example" />
-<div class=modal-describtion-container>
-<h3 class="modal-exercise-name">Air bake</h3>
-<div class="modal-rating">
-  <span class="modal-rating-value">4.0</span>  
-  <div class="starring">
-  <span class="modal-rating-star" data-value="1"><svg class="modal-icon-star inactive">
-                              <use href="./images/symbol-defs.svg#icon-star"></use></svg></span>
-  <span class="modal-rating-star" data-value="2"><svg class="modal-icon-star inactive" >
-                              <use href="./images/symbol-defs.svg#icon-star"></use></svg></span>
-  <span class="modal-rating-star" data-value="3"><svg class="modal-icon-star inactive">
-                              <use href="./images/symbol-defs.svg#icon-star"></use></svg></span>
-  <span class="modal-rating-star" data-value="4"><svg class="modal-icon-star inactive">
-                              <use href="./images/symbol-defs.svg#icon-star "></use></svg></span>
-  <span class="modal-rating-star" data-value="5"><svg class="modal-icon-star inactive">
-                              <use href="./images/symbol-defs.svg#icon-star"></use></svg></span>
-</div>
-</div>
-<div class="modal-description-block">
-  <ul class="modal-description-block-items">
-      <li>
-          <h4>Target</h4>
-<p class="modal-target">as</p>
-      </li>
-      <li>
-          <h4>Body Part</h4>
-<p class="modal-bodyPart">wast</p>
-      </li>
-      <li>
-          <h4>Equipment</h4>
-<p class="modal-equipment">body weght</p>
-      </li>
-      <li>
-          <h4>Popular</h4>
-<p class="modal-popularity">0</p>
-      </li>
-      <li>
-          <h4>Burned Calories</h4>
-<p class="modal-burnedCalories">323/3 n</p>
-      </li>
-  </ul>
-  <span class="modal-description-text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quas ducimus delectus est minima aliquam ullam rem repudiandae, corrupti porro? Quos nisi eum aliquid molestias inventore minima omnis itaque officiis? </span>
+  <div class="modal" data-id="">
+    <button class="modal-x-button" data-modal-close type="button">
+      <svg class="modal-icon-x" width="24px"  height= "24px">
+        <use href="../img/symbol-defs.svg#icon-x" ></use>
+      </svg>
+      </button>
+  <div class="modal-section">
+    <img class="modal-gif" src="https://ftp.goit.study/img/power-pulse/gifs/0570.gif" alt="exercise example" />
+    <div class=modal-describtion-container>
+      <h3 class="modal-exercise-name">Air bake</h3>
+      <div class="modal-rating">
+        <span class="modal-rating-value">4.0</span>  
+        <div class="starring">
+          <span class="modal-rating-star" data-value="1">
+            <svg class="modal-icon-star inactive">
+              <use href="../img/symbol-defs.svg#icon-star"></use>
+            </svg>
+          </span>
+          <span class="modal-rating-star" data-value="2">
+            <svg class="modal-icon-star inactive" >
+                <use href="../img/symbol-defs.svg#icon-star"></use>
+            </svg>
+          </span>
+          <span class="modal-rating-star" data-value="3">
+            <svg class="modal-icon-star inactive">
+              <use href="../img/symbol-defs.svg#icon-star"></use>
+            </svg>
+          </span>
+          <span class="modal-rating-star" data-value="4">
+            <svg class="modal-icon-star inactive">
+              <use href="../img/symbol-defs.svg#icon-star "></use>
+            </svg>
+          </span>
+          <span class="modal-rating-star" data-value="5">
+            <svg class="modal-icon-star inactive">
+                <use href="../img/symbol-defs.svg#icon-star"></use>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="modal-description-block">
+        <ul class="modal-description-block-items">
+          <li>
+            <h4>Target</h4>
+            <p class="modal-target">as</p>
+          </li>
+          <li>
+            <h4>Body Part</h4>
+            <p class="modal-bodyPart">wast</p>
+          </li>
+          <li>
+            <h4>Equipment</h4>
+            <p class="modal-equipment">body weght</p>
+          </li>
+          <li>
+            <h4>Popular</h4>
+            <p class="modal-popularity">0</p>
+          </li>
+          <li>
+            <h4>Burned Calories</h4>
+            <p class="modal-burnedCalories">323/3 min</p>
+          </li>
+        </ul>
+        <span class="modal-description-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quas ducimus delectus est minima aliquam ullam rem repudiandae, corrupti porro? Quos nisi eum aliquid molestias inventore minima omnis itaque officiis? </span>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-  <button class="modal-favorities-toogle" type="button">Add to favorites
+  <div class="buttons-container">
+    <button class="modal-favorites-add" type="button">Add to favorites
       <svg class="modal-icon-heart">
-        <use href="./images/symbol-defs.svg#icon-heart"></use>
+        <use href="../img/symbol-defs.svg#icon-heart"></use>
       </svg>
     </button>
+    <button class="modal-rating-open" type="button" rating-modal-open>Give a rating </button>
+  </div>
 </div>
 </div>
 
