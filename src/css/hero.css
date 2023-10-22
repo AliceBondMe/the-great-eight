@@ -1,201 +1,211 @@
 .hero {
-	display: flex;
-	padding-bottom: 40px;
+  display: flex;
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 .container {
-	max-width: 365px;
+  max-width: 365px;
 }
 
 .hero-title::before {
-	content: "";
-	display: inline-block;
-	width: 38px;
-	height: 38px;
-	background-image: url(../img/hero/hero-mobile-decor.png);
+  content: '';
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  background-image: url(../img/hero/hero-mobile-decor.png);
 }
 
 .hero-title {
-	display: inline-block;
-	position: relative;
-	max-width: 335px;
-	color: var(--basic-dark);
-	font-size: 40px;
-	font-weight: 400;
-	line-height: 1.2;
-	letter-spacing: -0.8px;
-	margin-bottom: 20px;
+  display: inline-block;
+  position: relative;
+  max-width: 335px;
+  color: var(--basic-dark);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-bottom: 17px;
 }
 
 .hero-title > span {
-	font-style: italic;
+  font-style: italic;
 }
 
 .hero-title:hover {
-	-webkit-mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 30%, #000 50%, rgba(0, 0, 0, 0.6) 70%);
-	-webkit-mask-size: 200%;
-	animation: wave 3s infinite;
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  animation: wave 3s infinite;
 }
 
 @-webkit-keyframes wave {
-	from {
-		-webkit-mask-position: 150%;
-	}
-	to {
-		-webkit-mask-position: -50%;
-	}
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
 }
 
 .hero-paragraph {
-	max-width: 335px;
-	color: var(--basic-dark);
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.28;
-	letter-spacing: -0.28px;
-	margin-bottom: 40px;
+  max-width: 335px;
+  color: var(--basic-dark);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.28px;
+  margin-bottom: 40px;
 }
 
 .hidden-photo {
-	display: none;
+  display: none;
 }
 
 .hero-photo-big {
-	margin-bottom: 20px;
-	border-radius: 30px;
+  margin-bottom: 20px;
+  border-radius: 30px;
 }
 
 .hero-list-link {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-link-list {
-	max-width: 334px;
-	display: flex;
-	justify-content: center;
-	gap: 6px;
-	flex-wrap: wrap;
+  max-width: 334px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .hero-link-item {
-	display: flex;
+  display: flex;
 }
 
 .hero-link {
-	padding: 4px 16px;
-	color: var(--basic-dark);
-	font-size: 13px;
-	font-weight: 400;
-	line-height: 1.28;
-	border-radius: 30px;
-	border: 1px solid var(--basic-dark);
-	transition-property: transform;
-	transition-duration: 300ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 4px 16px;
+  color: var(--basic-dark);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.28;
+  border-radius: 30px;
+  border: 1px solid var(--basic-dark);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-link:hover {
-	background-color: var(--basic-dark);
-	color: var(--basic-light);
-	transform: scale(1.12);
+  background-color: var(--basic-dark);
+  color: var(--basic-light);
+  transform: scale(1.12);
 }
 
 @media screen and (min-width: 375px) {
-	.container {
-		max-width: 365px;
-	}
+  .container {
+    max-width: 365px;
+  }
 
-	.hero-photo-big {
-		max-width: 335px;
-	}
+  .hero-photo-big {
+    max-width: 335px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-	.hero {
-		padding-bottom: 64px;
-	}
+  .hero {
+    padding-top: 76px;
+    padding-bottom: 64px;
+  }
 
-	.hero-title::before {
-		content: "";
-		display: inline-block;
-		width: 60px;
-		height: 60px;
-		background-image: url(../img/hero/hero-tablet&desktop-decor.png);
-	}
+  .hero-title::before {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-image: url(../img/hero/hero-tablet&desktop-decor.png);
+  }
 
-	.container {
-		max-width: 734px;
-	}
+  .container {
+    max-width: 734px;
+  }
 
-	.hero-title {
-		max-width: 593px;
-		font-size: 74px;
-		line-height: 1;
-		letter-spacing: -1.48px;
-	}
+  .hero-title {
+    max-width: 593px;
+    font-size: 74px;
+    letter-spacing: -1.48px;
+  }
 
-	.hero-paragraph {
-		max-width: 528px;
-		font-size: 18px;
-		line-height: 1.33;
-		letter-spacing: -0.36px;
-		margin-bottom: 32px;
-	}
+  .hero-paragraph {
+    max-width: 528px;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.36px;
+    margin-bottom: 32px;
+  }
 
-	.hero-photo-big {
-		max-width: 704px;
-		border-radius: 60px;
-		margin-bottom: 16px;
-	}
+  .hero-photo-big {
+    max-width: 704px;
+    border-radius: 60px;
+    margin-bottom: 16px;
+  }
 
-	.hero-list-link {
-		justify-content: end;
-	}
+  .hero-list-link {
+    justify-content: end;
+  }
 
-	.hero-link-list {
-		max-width: 366px;
-		gap: 8px;
-	}
+  .hero-link-list {
+    max-width: 366px;
+    gap: 8px;
+  }
 
-	.hero-link {
-		padding: 4px 16px;
-		font-size: 15px;
-		line-height: 1.5;
-	}
+  .hero-link {
+    padding: 4px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
 
-	.hero-link:hover {
-		transform: scale(1.15);
-	}
+  .hero-link:hover {
+    transform: scale(1.15);
+  }
 }
 
 @media screen and (min-width: 1440px) {
-	.container {
-		max-width: 1406px;
-		position: relative;
-	}
+  .hero {
+    padding-top: 62px;
+  }
 
-	.hidden-photo {
-		position: absolute;
-		top: 0px;
-		right: 15px;
-		border-radius: 20px;
-		display: block;
-	}
+  .container {
+    max-width: 1406px;
+    position: relative;
+  }
 
-	.hero-photo-small {
-		border-radius: 20px;
-	}
+  .hidden-photo {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    border-radius: 20px;
+    display: block;
+  }
 
-	.hero-photo-big {
-		max-width: 1376px;
-		margin-bottom: 0;
-	}
+  .hero-photo-small {
+    border-radius: 20px;
+  }
 
-	.hero-link-list {
-		position: absolute;
-		top: 135px;
-		right: 15px;
-		max-width: 188px;
-	}
+  .hero-photo-big {
+    max-width: 1376px;
+    margin-bottom: 0;
+  }
+
+  .hero-link-list {
+    position: absolute;
+    top: 135px;
+    right: 15px;
+    max-width: 188px;
+  }
 }
