@@ -95,7 +95,7 @@
 .footer-btn-email {
   margin-top: 20px;
   display: flex;
-  padding: 12px 148px;
+  padding: 12px 0;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -239,7 +239,7 @@
   }
   .footer-cont-adaptation {
     display: flex;
-    gap: 158px;
+    gap: 100px;
   }
   .footer-count-end {
     margin: 0;
@@ -260,6 +260,7 @@
   }
   .footer-cont-adaptation {
     padding-bottom: 50px;
+    gap: 158px;
   }
   .footer-feedback-title {
     width: 554px;
