@@ -123,7 +123,11 @@ function handlePagesChangeForWorkouts(event) {
       Number(event.target.textContent)
     )
     .then(
-      data => (refs.workoutList.innerHTML = createworkoutsMarkup(data.results))
+      data => {
+        refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
+        const openButtons = document.querySelectorAll("[data-modal-open]");
+        openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+      }
     )
     .catch(error =>
       Notiflix.Notify.failure(
@@ -209,6 +213,8 @@ function handleChangeOfScreen() {
               refs.pagesList.innerHTML = '';
               createPagesMarkup(totalPages, true);
               stopMarkUp = true;
+              const openButtons = document.querySelectorAll("[data-modal-open]");
+              openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
             })
             .catch(error =>
               Notiflix.Notify.failure(
@@ -248,6 +254,8 @@ function handleChangeOfScreen() {
             refs.pagesList.innerHTML = '';
             createPagesMarkup(totalPages, true);
             stopMarkUp = true;
+            const openButtons = document.querySelectorAll("[data-modal-open]");
+            openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
           });
       }
       if (stopMarkUp) return;
@@ -362,6 +370,8 @@ function handleResetBtnHideout(event) {
         refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
         refs.pagesList.innerHTML = '';
         createPagesMarkup(data.totalPages);
+        const openButtons = document.querySelectorAll("[data-modal-open]");
+        openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
       })
       .catch(error =>
         Notiflix.Notify.failure(
@@ -428,6 +438,8 @@ function handleSearch(event) {
       refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
       refs.pagesList.innerHTML = '';
       createPagesMarkup(data.totalPages);
+      const openButtons = document.querySelectorAll("[data-modal-open]");
+      openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
     })
     .catch(error =>
       Notiflix.Notify.failure(
