@@ -20,11 +20,10 @@
 }
 
 .rating {
-    position: absolute;
+    position: relative;
     top: 10px;
     left: 50%;
     transform: translate(-50%, 0) scale(1);
-    position: relative;
     padding: 40px 20px 40px 20px;
     max-width: 335px;
     height: 357px;
