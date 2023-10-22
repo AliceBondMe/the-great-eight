@@ -400,12 +400,12 @@ function handleInputLostFocus(event) {
 
 function handleSearch(event) {
   event.preventDefault();
-  disableListOfEl([...refs.categoriesList.children], true);
-  disableListOfEl([...refs.pagesList.children], true);
   if (refs.form.elements[0].value.trim() === '') {
     Notiflix.Notify.warning('Input is empty, fill in it, pelase!');
     return;
   }
+  disableListOfEl([...refs.categoriesList.children], true);
+  disableListOfEl([...refs.pagesList.children], true);
   searchRequest = refs.form.elements[0].value.trim().toLowerCase();
   apiServices
     .serviceExercisesSearch(
