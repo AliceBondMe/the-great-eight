@@ -2,6 +2,7 @@
 import * as apiServices from './api-service.js';
 import { createMarkupOptions } from './markup-categories.js';
 import { createworkoutsMarkup } from './markup-workouts.js';
+import { openExerciseModal } from './modal-exercise.js';
 import Notiflix from 'notiflix';
 import _, { get } from 'lodash';
 
@@ -75,6 +76,8 @@ function handleCategoryProceeding(event) {
       refs.pagesList.removeEventListener('click', handlePagesChange);
       refs.pagesList.addEventListener('click', handlePagesChangeForWorkouts);
       createPagesMarkup(data.totalPages);
+      const openButtons = document.querySelectorAll("[data-modal-open]");
+      openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
     })
     .catch(error =>
       Notiflix.Notify.failure(

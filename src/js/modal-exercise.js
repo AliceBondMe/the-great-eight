@@ -45,8 +45,7 @@ let arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
 let idxInLsArray = -1;
 let exerciseId;
 
-const selector = "[data-modal-open]";
-const openButtons = document.querySelectorAll(selector);
+const openButtons = document.querySelectorAll("[data-modal-open]");
 openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
 // refs.openExerciseModalBtn.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
