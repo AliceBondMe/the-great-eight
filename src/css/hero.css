@@ -26,7 +26,6 @@
   line-height: 1.2;
   letter-spacing: -0.8px;
   margin-bottom: 17px;
-  padding-bottom: 3px;
 }
 
 .hero-title > span {
@@ -139,7 +138,6 @@
   .hero-title {
     max-width: 593px;
     font-size: 74px;
-    line-height: 1;
     letter-spacing: -1.48px;
   }
 
