@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 serviceWorkoutSearch("64f389465ae26083f39b184c")
     .then((data) =>{_id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity})
 
@@ -32,3 +33,22 @@ rating.addEventListener("click", (event) => {
   // Обновити рейтинг
   rating.querySelector(".rating-value").textContent = ratingValue;
 });
+=======
+(() => {
+    const refs = {
+      openModalBtn: document.querySelector("[data-modal-open]"),
+      closeModalBtn: document.querySelector("[data-modal-close]"),
+      modal: document.querySelector("[data-modal]"),
+    };
+  
+    refs.openModalBtn.addEventListener("click", toggleModal);
+    refs.closeModalBtn.addEventListener("click", toggleModal);
+  
+    function toggleModal() {
+      refs.modal.classList.toggle("is-hidden");
+    }
+  })();
+
+
+  
+>>>>>>> Stashed changes
