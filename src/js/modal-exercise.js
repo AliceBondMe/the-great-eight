@@ -19,7 +19,8 @@ const notiflixParams = {
 };
 
 const refs = {
-  openExerciseModalBtn: document.querySelector("[data-modal-open]"),
+  workoutsList: document.querySelector("workouts-list"),
+  openExerciseModalBtn: document.querySelectorAll("[data-modal-open]"),
   closeExerciseModalBtn: document.querySelector("[data-modal-close]"),
   addToFavoriteBtn: document.querySelector(".modal-favorites-add"),
   exerciseModal: document.querySelector("[data-modal"),
@@ -44,14 +45,15 @@ let arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
 let idxInLsArray = -1;
 let exerciseId;
 
-refs.openExerciseModalBtn.addEventListener("click", openExerciseModal); 
-refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
+refs.openExerciseModalBtn.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
-export function openExerciseModal() {
+refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
+// refs.workoutsList.addEventListener("click", openExerciseModal);
+
+export function openExerciseModal(evt) {
   refs.exerciseModal.classList.remove("is-hidden");
   
-
-  exerciseId = refs.openExerciseModalBtn.closest(".js-workout-card").dataset.id;
+  exerciseId = evt.target.closest(".js-workout-card").dataset.id;
 
   let isFavorite = checkLsForId(exerciseId);
 
