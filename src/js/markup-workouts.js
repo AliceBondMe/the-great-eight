@@ -1,20 +1,24 @@
-function createWorkoutMarkup(title, rating, burnedCalories, bodyPart, target, iconTitle) {
-   return `
-   <li class="workout_item">
+import { serviceExercisesSearch } from "./api-service";
+
+export function createworkoutsMarkup(arr) {
+   return arr
+    .map(
+       ({_id, bodyPart, name, target, rating, burnedCalories}) =>
+   `<li class="workouts_item" data-id="${_id}">
       <div class="rating_item_wrap">
-         <h1 class="workout-title">${title}</h1>
-         <div class="workout-info">
+         <h1 class="workouts-title">workout</h1>
+         <div class="workouts-info">
             <div class="rating">${rating}</div>
-            <div class="workout-info-stars">
-               <div class="workout-info-items">
+            <div class="workouts-info-stars">
+               <div class="workouts-info-items">
                   <svg width="18" height="18">
                      <use class="icon-star" href="../img/symbol-defs.svg#icon-star"></use>
                   </svg>
                </div>
             </div>
          </div>
-         <div class="workout_arrow">
-            <p class="workout_subtext">Start</p>
+         <div class="workouts_arrow">
+            <p class="workouts_subtext">Start</p>
             <svg width="16" height="16">
    <use class="icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
             </svg>
@@ -26,28 +30,25 @@ function createWorkoutMarkup(title, rating, burnedCalories, bodyPart, target, ic
                <use class="icon-runner" href="../img/symbol-defs.svg#icon-running" stroke="black"></use>
             </svg>
          </div>
-         <h2 class="icon-title">${iconTitle}</h2>
+         <h2 class="icon-title">${name}</h2>
       </div>
-      <div class="workout-description">
-         <p class="description-light">Burned calories: <span class="description-dark">${burnedCalories}</span></p>
+      <div class="workouts-description">
+         <p class="description-light">Burned calories: <span class="description-dark">${burnedCalories} / 3 min</span></p>
          <p class="description-light">Body part: <span class="description-dark">${bodyPart}</span> </p>
          <p class="description-light">Target: <span class="description-dark">${target}</span></p>
       </div>
    </li>
-   `;
+   `).join('');
 }
 
-const workoutList = document.getElementById("workout-list");
 
-const burnedCalories = [200, 250, 300, 180, 220, 320, 270, 240, 280];
-const bodyParts = ["Waist", "Waist", "Waist", "Waist", "Waist", "Waist", "Waist", "Waist", "Waist"];
-const targets = ["Abs", "Abs", "Abs", "Biceps", "Abs", "Quads", "Abs", "Quads", "Abs"];
-const ratings = ["5.0", "5.0", "4.0", "3.0", "5.0", "4.0", "4.0", "5.0", "3.0"];
-const iconTitles = ["3/4 sit-up", "45° side bend", "Barbell reverse preacher curl", "Barbell rollerout", "Barbell side split squat v. 2", "Barbell rollerout", "Barbell side split squat v. 2", "45° side bend", "Barbell reverse preacher curl"];
+// Подивитись результат:
+// підключити в exercises.html:
+// <load="partials/workout.html" />
+// розкоментувати:
+// const workoutsList = document.getElementById("workouts-list");
 
-for (let i = 0; i < 9; i++) {
-   const newWorkoutItem = document.createElement("li");
-   newWorkoutItem.className = "workout_item";
-   newWorkoutItem.innerHTML = createWorkoutMarkup("Workout", ratings[i], burnedCalories[i] + " / 3 min", bodyParts[i], targets[i], iconTitles[i], i);
-   workoutList.appendChild(newWorkoutItem);
-}
+// serviceExercisesSearch("Body parts", "back", 12)
+//    .then((data) => {
+//       workoutsList.innerHTML = createworkoutsMarkup(data.results);
+//    })
