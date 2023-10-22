@@ -1,4 +1,4 @@
-import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-f9757875.js";function hr(m){return m.map(({filter:A,name:s,imgURL:E})=>`
+import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-543e838c.js";function hr(m){return m.map(({filter:A,name:s,imgURL:E})=>`
   <li class="categories-item">
     <div class="categories-photo-container">
       <a class="categories-gradient" href="#">     
@@ -19,26 +19,26 @@ import{c as dt,s as qe,N as j,a as cr,b as yd}from"./modal-rating-f9757875.js";f
       <div class="rating_item_wrap">
          <h1 class="workouts-title">workout</h1>
          <div class="workouts-info">
-            <div class="workouts-rating">${oe}</div>
+            <div class="workouts-rating">${Math.round(oe*10)/10}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
                   <svg width="18" height="18">
-                     <use class="icon-star" href="./img/symbol-defs.svg#icon-star"></use>
+                     <use class="icon-star" href="../img/symbol-defs.svg#icon-star"></use>
                   </svg>
                </div>
             </div>
          </div>
 			<button type="button" data-modal-open class="workouts_arrow-button workouts_arrow">
-				<p class="workouts_subtext">Start</p>
+               Start
 					<svg width="16" height="16">
-						<use class="icon-arrow" href="./img/symbol-defs.svg#icon-arrow" stroke="black"></use>
+						<use class="icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
 					</svg>
 		</button>
       </div>
       <div class="icon-wrapper">
          <div class="icon-circle">
             <svg width="20" height="20">
-               <use class="icon-runner" href="./img/symbol-defs.svg#icon-running" stroke="black"></use>
+               <use class="icon-runner" href="../img/symbol-defs.svg#icon-running" stroke="black"></use>
             </svg>
          </div>
          <h2 class="icon-title">${E}</h2>
