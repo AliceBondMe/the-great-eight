@@ -45,7 +45,11 @@ let arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
 let idxInLsArray = -1;
 let exerciseId;
 
-refs.openExerciseModalBtn.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+const selector = "[data-modal-open]";
+const openButtons = document.querySelectorAll(selector);
+openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+
+// refs.openExerciseModalBtn.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
 refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
 // refs.workoutsList.addEventListener("click", openExerciseModal);
@@ -123,7 +127,7 @@ function removeFromFavorite() {
 }
 
 function checkLsForId(exerciseId) {
-  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites));
+  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
   idxInLsArray = arrayFromLs.findIndex(({ id }) => id === exerciseId);
   if (idxInLsArray === -1) {
     refs.addToFavoriteBtn.textContent = "Add to favorites";
