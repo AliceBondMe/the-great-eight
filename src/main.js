@@ -6,5 +6,6 @@ import "./js/api-service";
 import "./js/favorites";
 import "./js/markup-categories";
 import "./js/markup-workouts";
+import "./js/modal-rating";
 
 

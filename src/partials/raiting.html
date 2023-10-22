@@ -1,6 +1,64 @@
-<!-- Всі класи в даному файлі мають розпочинатись з raiting-->
-<div class="backdrop is-hidden" data-raiting>
-    <div class="raiting">
-        <p>raiting</p>
+<!-- Всі класи в даному файлі мають розпочинатись з rating-->
+
+<!-- Цю кнопку потім видалити, вона для тестування модалки рейтингу -->
+<div class="ex-mod" data-id="64f389465ae26083f39b184c">
+    <button type="button" rating-modal-open>Test Give a rating</button>
+</div>
+
+<!--  -->
+
+<div class="backdrop is-hidden" data-rating>
+    <div class="rating">
+        <button type="button" class="rating-btn-close" rating-modal-close>
+            <svg width="24" height="24" class="raiting-close-icon">
+                <use href="../img/symbol-defs.svg#icon-x"></use>
+            </svg>
+        </button>
+
+        <h3 class="rating-title">Rating</h3>
+        <div class="rating-wrap">
+            <fieldset class="rating-container">
+                <input type="radio" name="rating" id="rate5" value="5" class="rating-radio">
+                <label for="rate5" class="rating-label">
+                    <svg width="24" height="24" class="rating-star">
+                        <use href="../img/symbol-defs.svg#icon-star"></use>
+                    </svg>
+                </label>
+                <input type="radio" name="rating" id="rate4" value="4" class="rating-radio">
+                <label for="rate4" class="rating-label">
+                    <svg width="24" height="24" class="rating-star">
+                        <use href="../img/symbol-defs.svg#icon-star"></use>
+                    </svg>
+                </label>
+                <input type="radio" name="rating" id="rate3" value="3" class="rating-radio">
+                <label for="rate3" class="rating-label">
+                    <svg width="24" height="24" class="rating-star">
+                        <use href="../img/symbol-defs.svg#icon-star"></use>
+                    </svg>
+                </label>
+                <input type="radio" name="rating" id="rate2" value="2" class="rating-radio">
+                <label for="rate2" class="rating-label">
+                    <svg width="24" height="24" class="rating-star">
+                        <use href="../img/symbol-defs.svg#icon-star"></use>
+                    </svg>
+                </label>
+                <input type="radio" name="rating" id="rate1" value="1" class="rating-radio">
+                <label for="rate1" class="rating-label">
+                    <svg width="24" height="24" class="rating-star">
+                        <use href="../img/symbol-defs.svg#icon-star"></use>
+                    </svg>
+                </label>
+            <span class="rating-number"></span>
+            </fieldset>
+        </div>
+        <form class="rating-form" autocomplete="off">
+            <label>
+                <input type="email" name="email" placeholder="Email" class="rating-email" required/>
+            </label>
+            <label>
+                <textarea name="message" rows="4" maxlength="250" placeholder="Your comment" class="rating-comment" required></textarea>
+            </label>
+            <button type="submit" class="rating-btn-submit">Send</button>
+        </form>
     </div>
 </div>
