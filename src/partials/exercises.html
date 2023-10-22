@@ -1,7 +1,73 @@
 <!-- Всі класи в даному файлі мають розпочинатись з exercises-->
 <section class="exercises">
-    <div class="container">
-        <p>exercises</p>
-        <load="partials/quote.html" />
+  <div class="container">
+    <div class="exercises-upper-div">
+      <div class="exercises-header-div">
+        <h2 class="exercises-header">Exercises</h2>
+        <span class="exercises-point exercises-hide"></span>
+      </div>
+
+      <div class="exercises-filter-div">
+        <form
+          class="exercises-filter-search-form exercises-hide"
+          id="exercises-filter-search-form"
+        >
+          <div class="exercises-input-div">
+            <input
+              type="text"
+              name="filter-search"
+              placeholder="Search"
+              class="exercises-filter-search-input"
+            />
+
+            <button class="exercises-form-submit-btn" type="submit">
+              <svg
+                class="exercises-form-submit-btn-icon"
+                width="18"
+                height="18"
+              >
+                <use href="../img/symbol-defs.svg#icon-search"></use>
+              </svg>
+            </button>
+            <button
+              class="exercises-form-reset-btn exercises-hide"
+              type="reset"
+            >
+              <svg class="exercises-form-reset-btn-icon" width="18" height="18">
+                <use href="../img/symbol-defs.svg#icon-x"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+        <ul class="exercises-categories-list">
+          <li class="exercises-categories-item">
+            <button
+              type="button"
+              class="exercises-categories-btn exercises-current-category"
+            >
+              Body parts
+            </button>
+          </li>
+          <li class="exercises-categories-item">
+            <button type="button" class="exercises-categories-btn">
+              Muscles
+            </button>
+          </li>
+          <li class="exercises-categories-item">
+            <button type="button" class="exercises-categories-btn">
+              Equipment
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
+    <div class="exercises-categories-result">
+      <ul class="categories-gallery"></ul>
+    </div>
+    <ul class="workouts_list exercises-hide" id="workout-list"></ul>
+    <div class="exercises-pages">
+      <ul class="exercises-pages-list"></ul>
+    </div>
+    <load ="partials/quote.html" />
+  </div>
 </section>
