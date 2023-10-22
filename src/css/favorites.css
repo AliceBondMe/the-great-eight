@@ -13,7 +13,7 @@
   line-height: 1.36;
   letter-spacing: -2%;
 }
-
+/**************************************************  sidebar  ********************************************/
 .favorites-sidebar {
   display: flex;
   gap: 20px;
@@ -220,7 +220,7 @@
   }
 }
 
-/**********  workout  ***********/
+/*************************************************  workout  ****************************************************/
 .favorites-exercises {
   display: flex;
   flex-direction: column;
@@ -389,7 +389,7 @@
     overflow-y: scroll;
   }
 }
-/**********  header  ***********/
+/*****************************************************  header  ******************************************/
 .header {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -545,15 +545,16 @@
   }
 }
 
-/* 
-.exercises-pages-list {
+/*****************************************  pages  **************************************/
+
+.favorites-pages-list {
   display: flex;
   gap: 8px;
   align-items: center;
   justify-content: center;
 }
 
-.exercises-pages-button {
+.favorites-pages-button {
   border: none;
   font-size: 20px;
   background-color: transparent;
@@ -563,7 +564,7 @@
   transition: color var(--transition), transform var(--transition);
 }
 
-.exercises-current-page {
+.favorites-current-page {
   color: var(--basic-dark);
   border: 1px solid var(--basic-dark);
   border-radius: 18px;
@@ -571,14 +572,14 @@
   height: 32px;
 }
 
-.exercises-pages-button:hover,
-.exercises-pages-button:focus {
+.favorites-pages-button:hover,
+.favorites-pages-button:focus {
   color: var(--basic-dark);
   transform: translateY(-3px);
 }
 
-.exercises-current-page:hover,
-.exercises-current-page:focus {
+.favorites-current-page:hover,
+.favorites-current-page:focus {
   transform: translateY(0);
   cursor: pointer;
-} */
+}
