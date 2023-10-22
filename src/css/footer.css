@@ -239,7 +239,7 @@
   }
   .footer-cont-adaptation {
     display: flex;
-    gap: 158px;
+    gap: 100px;
   }
   .footer-count-end {
     margin: 0;
@@ -260,6 +260,7 @@
   }
   .footer-cont-adaptation {
     padding-bottom: 50px;
+    gap: 158px;
   }
   .footer-feedback-title {
     width: 554px;
