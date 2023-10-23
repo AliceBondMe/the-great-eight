@@ -170,14 +170,7 @@
     margin-top: 32px;
     margin-bottom: 40px;
   }
-  .exercises-main {
-    display: flex;
-    gap: 32px;
-  }
-  .exercises-categories-container {
-    width: 900px;
-    order: 2;
-  }
+ 
   .exercises-categories-list {
     margin: 0;
   }
@@ -219,5 +212,13 @@
   }
   .exercises-filter-div {
     gap: 32px;
+  }
+  .exercises-main {
+    display: flex;
+    gap: 32px;
+  }
+  .exercises-categories-container {
+    width: 900px;
+    order: 2;
   }
 }
