@@ -1,3 +1,4 @@
+import svgSprite from "../img/symbol-defs.svg";
 import { serviceWorkoutSearch } from "./api-service";
 import Notiflix from "notiflix";
 
@@ -79,7 +80,7 @@ export function openExerciseModal(evt) {
       }
 
       favoriteObj = {
-        id: _id,
+        _id: _id,
         bodyPart: bodyPart,
         equipment: equipment,
         gifUrl: gifUrl,
@@ -92,6 +93,7 @@ export function openExerciseModal(evt) {
       }
 
       refs.addToFavoriteBtn.addEventListener("click", () => {
+        exerciseId = evt.target.closest(".js-workout-card").dataset.id;
         isFavorite = checkLsForId(exerciseId);
         if (!isFavorite) {
           addToFavorite();
@@ -99,8 +101,6 @@ export function openExerciseModal(evt) {
           removeFromFavorite();
       }
       })
-      
-      
     })
     .catch((error) => {
       Notiflix.Notify.failure("Something went wrong. Please try again later.", notiflixParams);
@@ -112,22 +112,22 @@ export function closeExerciseModal() {
     refs.exerciseModal.classList.add("is-hidden");
 };
 
-function addToFavorite() {
+export function addToFavorite() {
   arrayFromLs.push(favoriteObj);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
 }
 
-function removeFromFavorite() {
+export function removeFromFavorite() {
   console.log(arrayFromLs);
   arrayFromLs.splice(idxInLsArray, 1);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
 }
 
-function checkLsForId(exerciseId) {
+export function checkLsForId(exerciseId) {
   arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
-  idxInLsArray = arrayFromLs.findIndex(({ id }) => id === exerciseId);
+  idxInLsArray = arrayFromLs.findIndex(({ _id }) => _id === exerciseId);
   if (idxInLsArray === -1) {
     refs.addToFavoriteBtn.textContent = "Add to favorites";
     refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="./img/symbol-defs.svg#icon-heart"></use></svg>`);
@@ -135,7 +135,7 @@ function checkLsForId(exerciseId) {
     return false;
   } else {
     refs.addToFavoriteBtn.textContent = "Remove from favorites";
-    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="./img/symbol-defs.svg#icon-trash"></use></svg>`);
+    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="${svgSprite}#icon-trash"></use></svg>`);
 
     return true;
   }
