@@ -3,17 +3,18 @@ import { serviceWorkoutSearch } from "./api-service";
 import Notiflix from "notiflix";
 
 const notiflixParams = {
+    timeout: 1000,
     width: '320px',
     position: 'center-center',
     fontSize: '16px',
     cssAnimationStyle: 'from-bottom',
     backOverlay: true,
     useIcon: false,
-    failure: {
+  failure: {
         background: '#242424',
         textColor: '#F4F4F4',
     },
-    success: {
+  success: {
         background: '#F4F4F4',
         textColor: '#242424',
     },
@@ -26,6 +27,7 @@ const refs = {
   addToFavoriteBtn: document.querySelector(".modal-favorites-add"),
   exerciseModal: document.querySelector("[data-modal"),
   modal: document.querySelector(".modal"),
+  backdrop: document.querySelector(".js-backdrop"),
   stars: document.querySelectorAll(".modal-icon-star"),
   ratingValue: document.querySelector(".modal-rating-value"),
   modalExerciseName: document.querySelector(".modal-exercise-name"),
@@ -53,8 +55,10 @@ refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
 
 export function openExerciseModal(evt) {
   refs.exerciseModal.classList.remove("is-hidden");
+
+  refs.backdrop.addEventListener("click", closeExerciseModalForBackdrop);
   
-  exerciseId = evt.target.closest(".js-workout-card").dataset.id;
+  exerciseId = evt?.target.closest(".js-workout-card").dataset.id ?? exerciseId;
 
   checkLsForId( exerciseId);
 
@@ -62,7 +66,7 @@ export function openExerciseModal(evt) {
     .then(({ _id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity }) => {
       refs.modal.dataset.id = _id;
       refs.modalExerciseName.textContent = name;
-      refs.modalRatingValue.textContent = Math.round(rating*10)/10;
+      refs.modalRatingValue.textContent = (Math.round(rating*10)/10).toFixed(1);
       refs.modalTarget.textContent = target;
       refs.modalBodyPart.textContent = bodyPart;
       refs.modalEquipment.textContent = equipment;
@@ -120,6 +124,18 @@ function closeExerciseModal() {
   exerciseId = -1;
 };
 
+function closeExerciseModalForBackdrop(evt) {
+  if (evt.target !== evt.currentTarget) {
+    return;
+  }
+  refs.exerciseModal.classList.add("is-hidden");
+  refs.addToFavoriteBtn.removeEventListener("click", handlToFavoriteClick);
+  favoriteObj = {};
+  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
+  idxInLsArray = -1;
+  exerciseId = -1;
+};
+
 export function addToFavorite() {
   arrayFromLs.push(favoriteObj);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
@@ -130,6 +146,9 @@ export function removeFromFavorite() {
   arrayFromLs.splice(idxInLsArray, 1);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
+  if (window.location.pathname == "/favorites.html") {
+    location.reload();
+  }
 }
 
 export function checkLsForId(exerciseId) {

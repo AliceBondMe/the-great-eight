@@ -9,7 +9,7 @@ export function createworkoutsMarkup(arr) {
       <div class="rating_item_wrap">
          <h1 class="workouts-title">workout</h1>
          <div class="workouts-info">
-            <div class="workouts-rating">${Math.round(rating*10)/10}</div>
+            <div class="workouts-rating">${(Math.round(rating*10)/10).toFixed(1)}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
                   <svg width="18" height="18">

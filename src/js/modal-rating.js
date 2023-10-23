@@ -5,6 +5,7 @@ import { serviceRatingAdd } from "./api-service";
 import Notiflix from "notiflix";
 
 const notiflixParams = {
+    timeout: 1000,
     width: '320px',
     position: 'center-center',
     fontSize: '16px',
