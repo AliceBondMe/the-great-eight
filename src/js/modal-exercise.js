@@ -44,22 +44,20 @@ const lsKeyFavorites = "favorites";
 let favoriteObj = {};
 let arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
 let idxInLsArray = -1;
-let exerciseId;
+let exerciseId = -1;
 
 const openButtons = document.querySelectorAll("[data-modal-open]");
 openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
-// refs.openExerciseModalBtn.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
-
 refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
-// refs.workoutsList.addEventListener("click", openExerciseModal);
 
 export function openExerciseModal(evt) {
   refs.exerciseModal.classList.remove("is-hidden");
   
   exerciseId = evt.target.closest(".js-workout-card").dataset.id;
+  console.log(evt.target.closest(".js-workout-card").dataset.id);
 
-  let isFavorite = checkLsForId(exerciseId);
+  checkLsForId( exerciseId);
 
   serviceWorkoutSearch(exerciseId)
     .then(({ _id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity }) => {
@@ -92,15 +90,7 @@ export function openExerciseModal(evt) {
         popularity: popularity,
       }
 
-      refs.addToFavoriteBtn.addEventListener("click", () => {
-        exerciseId = evt.target.closest(".js-workout-card").dataset.id;
-        isFavorite = checkLsForId(exerciseId);
-        if (!isFavorite) {
-          addToFavorite();
-        } else {
-          removeFromFavorite();
-      }
-      })
+      refs.addToFavoriteBtn.addEventListener("click", handlToFavoriteClick);
     })
     .catch((error) => {
       Notiflix.Notify.failure("Something went wrong. Please try again later.", notiflixParams);
@@ -108,18 +98,37 @@ export function openExerciseModal(evt) {
     });
 };
 
-export function closeExerciseModal() {
-    refs.exerciseModal.classList.add("is-hidden");
+function handlToFavoriteClick() {
+  if (!checkLsForId(exerciseId)) {
+    addToFavorite();
+      return;
+  } else {
+    removeFromFavorite();
+    return;
+  }
+}
+
+export function closeExerciseModalForRating() {
+  refs.exerciseModal.classList.add("is-hidden");
+};
+
+function closeExerciseModal() {
+  refs.exerciseModal.classList.add("is-hidden");
+  refs.addToFavoriteBtn.removeEventListener("click", handlToFavoriteClick);
+  favoriteObj = {};
+  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
+  idxInLsArray = -1;
+  exerciseId = -1;
 };
 
 export function addToFavorite() {
+  console.log(arrayFromLs);
   arrayFromLs.push(favoriteObj);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
 }
 
 export function removeFromFavorite() {
-  console.log(arrayFromLs);
   arrayFromLs.splice(idxInLsArray, 1);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
@@ -130,13 +139,11 @@ export function checkLsForId(exerciseId) {
   idxInLsArray = arrayFromLs.findIndex(({ _id }) => _id === exerciseId);
   if (idxInLsArray === -1) {
     refs.addToFavoriteBtn.textContent = "Add to favorites";
-    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="./img/symbol-defs.svg#icon-heart"></use></svg>`);
-
+    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="${svgSprite}#icon-heart"></use></svg>`);
     return false;
   } else {
     refs.addToFavoriteBtn.textContent = "Remove from favorites";
     refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="${svgSprite}#icon-trash"></use></svg>`);
-
     return true;
   }
 }

@@ -1,6 +1,6 @@
 // Коли буде картка товару - замінити кнопку на відкриття рейтингу
 import { openExerciseModal } from "./modal-exercise";
-import { closeExerciseModal } from "./modal-exercise";
+import { closeExerciseModalForRating } from "./modal-exercise";
 import { serviceRatingAdd } from "./api-service";
 import Notiflix from "notiflix";
 
@@ -67,7 +67,7 @@ function handleSubmit(evt) {
 
 function openRatingModal() {
     refs.ratingModal.classList.remove("is-hidden");
-    closeExerciseModal();
+    closeExerciseModalForRating();
 };
 
 function closeRatingModal() {
