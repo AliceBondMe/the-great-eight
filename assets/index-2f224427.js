@@ -1,4 +1,4 @@
-import{s as $i,c as xt,b as ze,o as Ze,N as j,d as pr,e as Cd}from"./modal-rating-c8c2499b.js";function dr(w){return w.map(({filter:y,name:s,imgURL:A})=>`
+import{s as $i,c as xt,b as ze,o as Ze,N as j,d as pr,e as Cd}from"./modal-rating-5e9ed398.js";function dr(w){return w.map(({filter:y,name:s,imgURL:A})=>`
   <li class="categories-item">
     <div class="categories-photo-container" data-categories-id-js="${s}">
       <a class="categories-gradient" href="#">     
@@ -22,8 +22,8 @@ import{s as $i,c as xt,b as ze,o as Ze,N as j,d as pr,e as Cd}from"./modal-ratin
             <div class="workouts-rating">${(Math.round(ae*10)/10).toFixed(1)}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
-                  <svg width="18" height="18">
-                     <use class="icon-star" 
+                  <svg width="18" height="18" class="icon-star" >
+                     <use
                      href="${$i}#icon-star"></use>
                   </svg>
                </div>
@@ -31,16 +31,16 @@ import{s as $i,c as xt,b as ze,o as Ze,N as j,d as pr,e as Cd}from"./modal-ratin
          </div>
 			<button type="button" data-modal-open class="workouts_arrow-button workouts_arrow">
                Start
-					<svg width="16" height="16">
-						<use class="icon-arrow" 
+					<svg width="16" height="16" class="icon-arrow">
+						<use 
                   href="${$i}#icon-arrow" stroke="black"></use>
 					</svg>
 		</button>
       </div>
       <div class="icon-wrapper">
          <div class="icon-circle">
-            <svg width="20" height="20">
-               <use class="icon-runner" 
+            <svg width="14" height="14" class="icon-runner">
+               <use 
                href="${$i}#icon-running" stroke="black"></use>
             </svg>
          </div>
