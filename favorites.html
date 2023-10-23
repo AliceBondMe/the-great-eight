@@ -13,8 +13,9 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/the-great-eight/assets/modal-rating-5d3ca264.js"></script>
-    <link rel="stylesheet" href="/the-great-eight/assets/modal-rating-ef2b6255.css">
+    <script type="module" crossorigin src="/the-great-eight/assets/favorites-2a0cf0e0.js"></script>
+    <link rel="modulepreload" crossorigin href="/the-great-eight/assets/modal-exercise-fb064d2f.js">
+    <link rel="stylesheet" href="/the-great-eight/assets/modal-exercise-fa47c401.css">
   </head>
 
   <body>
@@ -236,30 +237,28 @@
                   <li class="favorites-rating_item">
                     <div class="favorites-rating_item_wrap">
                       <h1 class="favorites-rating-title">Workout</h1>
+
                       <button
                         type="button"
                         class="favorites-rating-title-button"
-                        data-about="_id"
+                        data-about="id"
                       >
                         <svg width="16" height="16">
                           <use
                             class="favorites-icon-bin"
+                            id="favorites-icon-bin"
                             href="../img/symbol-defs.svg#icon-trash"
                           ></use>
                         </svg>
                       </button>
-                      <div class="favorites-workout_arrow">
-                        <button type="button" class="favorites-workout-start">
-                          Start
-                        </button>
-                        <svg width="16" height="16">
-                          <use
-                            class="favorites-icon-arrow"
-                            href="../img/symbol-defs.svg#icon-arrow"
-                            stroke="black"
-                          ></use>
-                        </svg>
-                      </div>
+
+                        <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
+                          <p class="favorites-workouts-subtext">Start</p>
+                            <svg width="16" height="16">
+                              <use class="favorites-icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
+                            </svg>
+                      </button>
+
                     </div>
                     <div class="favorites-icon-wrapper">
                       <div class="favorites-icon-circle">
@@ -294,9 +293,9 @@
                 </ul>
               </div> -->
             </div>
-            <div class="favorites-pages">
-              <ul class="favorites-pages-list"></ul>
-            </div>
+          </div>
+          <div class="favorites-pages">
+            <ul class="favorites-pages-list"></ul>
           </div>
         </div>
       </section>
