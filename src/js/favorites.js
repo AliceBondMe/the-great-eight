@@ -129,8 +129,6 @@ if (arrFavoriteExercises.length) {
   });
   let infexOfEl;
 
-  console.log(arrFavoriteExercises);
-
   function deletefromLocalStorage(event) {
     const currentId = event.target.closest('.js-workout-card').dataset.id;
     arrFavoriteExercises.forEach(el => {
@@ -139,10 +137,6 @@ if (arrFavoriteExercises.length) {
       );
     });
     arrFavoriteExercises.splice(infexOfEl, 1);
-
-    console.log(arrFavoriteExercises);
-    console.log(currentId);
-    console.log(infexOfEl);
 
     localStorage.removeItem('favorites');
     localStorage.setItem('favorites', JSON.stringify(arrFavoriteExercises));
