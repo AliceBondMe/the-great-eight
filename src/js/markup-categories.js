@@ -5,7 +5,7 @@ function createMarkupOptions(data) {
     .map(
       ({ filter, name, imgURL }) => `
   <li class="categories-item">
-    <div class="categories-photo-container">
+    <div class="categories-photo-container" data-categories-id-js="${name}">
       <a class="categories-gradient" href="#">     
         <img
           src="${imgURL}"

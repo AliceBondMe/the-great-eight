@@ -18,6 +18,7 @@ const refs = {
 };
 
 const mediaQueryTablet = window.matchMedia('(min-width: 768px)');
+const scrollPoint = document.getElementById('exercisesFilterDiv');
 
 let proceedCategories = true;
 let currentCategoryName = '';
@@ -40,18 +41,33 @@ refs.categoriesResult.addEventListener('click', handleCategoryProceeding);
 refs.categoriesList.addEventListener('click', handleCategoryChange);
 refs.pagesList.addEventListener('click', handlePagesChange);
 
+refs.header.addEventListener('click', handleGoBack);
+
+function handleGoBack(event) {
+  if (proceedCategories) return;
+  refs.workoutList.innerHTML = '';
+  event.target.textContent = 'Exercises';
+  loadingOfCategories();
+  refs.headerPoint.classList.toggle('exercises-hide');
+  refs.form.classList.toggle('exercises-hide');
+  proceedCategories = true;
+}
+
 function handleCategoryProceeding(event) {
   event.preventDefault();
-  if (!event.target.classList.contains('categories-gradient')) {
+  if (event.target === event.currentTarget) {
     return;
   }
   proceedCategories = false;
+
+  currentCategoryName = event.target
+    .closest('.categories-photo-container')
+    .getAttribute('data-categories-id-js');
 
   refs.form.classList.toggle('exercises-hide');
   refs.workoutList.classList.toggle('exercises-hide');
   refs.header.textContent = `Exercises /`;
   refs.headerPoint.classList.toggle('exercises-hide');
-  currentCategoryName = event.target.firstElementChild.alt;
   refs.headerPoint.textContent = `${
     currentCategoryName.charAt(0).toUpperCase() + currentCategoryName.slice(1)
   }`;
@@ -76,8 +92,10 @@ function handleCategoryProceeding(event) {
       refs.pagesList.removeEventListener('click', handlePagesChange);
       refs.pagesList.addEventListener('click', handlePagesChangeForWorkouts);
       createPagesMarkup(data.totalPages);
-      const openButtons = document.querySelectorAll("[data-modal-open]");
-      openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+      const openButtons = document.querySelectorAll('[data-modal-open]');
+      openButtons.forEach(openModalBtnItem => {
+        openModalBtnItem.addEventListener('click', openExerciseModal);
+      });
     })
     .catch(error =>
       Notiflix.Notify.failure(
@@ -122,13 +140,13 @@ function handlePagesChangeForWorkouts(event) {
       perPageMedia,
       Number(event.target.textContent)
     )
-    .then(
-      data => {
-        refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
-        const openButtons = document.querySelectorAll("[data-modal-open]");
-        openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
-      }
-    )
+    .then(data => {
+      refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
+      const openButtons = document.querySelectorAll('[data-modal-open]');
+      openButtons.forEach(openModalBtnItem => {
+        openModalBtnItem.addEventListener('click', openExerciseModal);
+      });
+    })
     .catch(error =>
       Notiflix.Notify.failure(
         `Something went wrong, please reload the page, execution error is ${error}`
@@ -137,6 +155,7 @@ function handlePagesChangeForWorkouts(event) {
     .finally(() => {
       disableListOfEl(listItems, false);
       disableListOfEl([...refs.categoriesList.children], false);
+      scrollPoint.scrollIntoView({ behavior: 'smooth' });
     });
 }
 
@@ -213,8 +232,11 @@ function handleChangeOfScreen() {
               refs.pagesList.innerHTML = '';
               createPagesMarkup(totalPages, true);
               stopMarkUp = true;
-              const openButtons = document.querySelectorAll("[data-modal-open]");
-              openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+              const openButtons =
+                document.querySelectorAll('[data-modal-open]');
+              openButtons.forEach(openModalBtnItem => {
+                openModalBtnItem.addEventListener('click', openExerciseModal);
+              });
             })
             .catch(error =>
               Notiflix.Notify.failure(
@@ -254,8 +276,10 @@ function handleChangeOfScreen() {
             refs.pagesList.innerHTML = '';
             createPagesMarkup(totalPages, true);
             stopMarkUp = true;
-            const openButtons = document.querySelectorAll("[data-modal-open]");
-            openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+            const openButtons = document.querySelectorAll('[data-modal-open]');
+            openButtons.forEach(openModalBtnItem => {
+              openModalBtnItem.addEventListener('click', openExerciseModal);
+            });
           });
       }
       if (stopMarkUp) return;
@@ -317,6 +341,7 @@ function handlePagesChange(event) {
     .finally(() => {
       disableListOfEl(listItems, false);
       disableListOfEl([...refs.categoriesList.children], false);
+      scrollPoint.scrollIntoView({ behavior: 'smooth' });
     });
 }
 
@@ -370,8 +395,10 @@ function handleResetBtnHideout(event) {
         refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
         refs.pagesList.innerHTML = '';
         createPagesMarkup(data.totalPages);
-        const openButtons = document.querySelectorAll("[data-modal-open]");
-        openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+        const openButtons = document.querySelectorAll('[data-modal-open]');
+        openButtons.forEach(openModalBtnItem => {
+          openModalBtnItem.addEventListener('click', openExerciseModal);
+        });
       })
       .catch(error =>
         Notiflix.Notify.failure(
@@ -438,8 +465,10 @@ function handleSearch(event) {
       refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
       refs.pagesList.innerHTML = '';
       createPagesMarkup(data.totalPages);
-      const openButtons = document.querySelectorAll("[data-modal-open]");
-      openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
+      const openButtons = document.querySelectorAll('[data-modal-open]');
+      openButtons.forEach(openModalBtnItem => {
+        openModalBtnItem.addEventListener('click', openExerciseModal);
+      });
     })
     .catch(error =>
       Notiflix.Notify.failure(
