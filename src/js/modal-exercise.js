@@ -55,7 +55,6 @@ export function openExerciseModal(evt) {
   refs.exerciseModal.classList.remove("is-hidden");
   
   exerciseId = evt.target.closest(".js-workout-card").dataset.id;
-  console.log(evt.target.closest(".js-workout-card").dataset.id);
 
   checkLsForId( exerciseId);
 
@@ -122,7 +121,6 @@ function closeExerciseModal() {
 };
 
 export function addToFavorite() {
-  console.log(arrayFromLs);
   arrayFromLs.push(favoriteObj);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
