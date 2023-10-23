@@ -283,10 +283,10 @@
   }
   @media screen and (max-width: 767px){
     .buttons-container {
-      flex-direction: column;
-      gap: 8px;}
+      /* flex-direction: column; */
+      gap: 6px;}
       .modal-favorites-add {
-        width: 216px;
+        width: 200px;
     }
 
   }
