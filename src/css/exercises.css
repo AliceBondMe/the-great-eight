@@ -8,11 +8,12 @@
   font-size: 28px;
   line-height: 1.35;
   letter-spacing: -0.56px;
-  margin-bottom: 20px;
 }
 .exercises-header-div {
   display: flex;
   gap: 8px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
 .exercises-point {
@@ -37,13 +38,14 @@
   background-color: transparent;
   outline: none;
   padding-right: 30px;
+  margin-bottom: 20px;
 }
 
 .exercises-form-submit-btn {
   position: absolute;
   background: transparent;
   border: none;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   right: 11px;
   padding: 0;
@@ -163,23 +165,35 @@
   .exercises-header {
     margin-bottom: 0px;
   }
+  .exercises-header-div {
+    margin-bottom: 0;
+    align-items: flex-end;
+  }
+  .exercises-header {
+    font-size: 44px;
+    line-height: 1.09;
+  }
   .exercises-filter-div {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     margin-top: 32px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
- 
+
   .exercises-categories-list {
     margin: 0;
   }
   .exercises-filter-search-input {
     width: 271px;
     font-size: 16px;
+    margin-bottom: 0;
   }
   .exercises-input-div {
     margin-top: 0;
+  }
+  .exercises-form-submit-btn {
+    top: 50%;
   }
   .exercises-categories-btn {
     font-size: 16px;
@@ -190,6 +204,13 @@
   .exercises-form-reset-btn {
   }
   .exercises-form-submit-btn {
+  }
+  .exercises-point {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: -0.48px;
   }
 }
 

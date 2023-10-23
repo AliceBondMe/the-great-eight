@@ -1,3 +1,7 @@
+.favorites {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
 .favorites-container {
   display: flex;
   gap: 40px;
@@ -5,13 +9,11 @@
 }
 
 .favorites-header {
-  padding-bottom: 20px;
-  padding-top: 60px;
+  margin-bottom: 20px;  
   font-size: 28px;
   color: #242424;
   font-weight: 400;
   line-height: 1.36;
-  letter-spacing: -2%;
 }
 /**************************************************  sidebar  ********************************************/
 .favorites-sidebar {
@@ -28,7 +30,7 @@
   gap: 18px;
 }
 .favorites-sidebar-quote-icon-container {
-  width: 34px;
+  width: 32px;
   height: 32px;
   border-radius: 100%;
   background-color: rgba(244, 244, 244, 0.2);
@@ -45,7 +47,8 @@
 }
 
 .favorites-sidebar-quote-text {
-  width: 100%;
+  width: 243px;
+  max-width: 100%;
 }
 
 .favorites-sidebar-quote-text-header {
@@ -56,6 +59,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0;
+  margin-bottom: 6px;
 }
 
 .favorites-sidebar-quote-text-icon {
@@ -91,7 +95,7 @@
 
 .favorites-sidebar-sportblock-textblock-icon {
   fill: #242424;
-  margin-bottom: 15px;
+  margin-bottom: 11px;
 }
 
 .favorites-sidebar-sportblock-textblock-header {
@@ -122,13 +126,16 @@
 }
 
 @media (min-width: 768px) {
+  .favorites {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
   .favorites-container {
     gap: 64px;
   }
 
   .favorites-header {
-    padding-bottom: 32px;
-    padding-top: 80px;
+    margin-bottom: 32px;    
     font-size: 44px;
     line-height: 1.09;
   }
@@ -136,12 +143,14 @@
   .favorites-sidebar {
     gap: 16px;
   }
-
+  
   .favorites-sidebar-quote {
     padding: 40px;
     gap: 16px;
   }
-
+  .favorites-sidebar-quote-text {
+    width: 574px;
+  }
   .favorites-sidebar-quote-text-header {
     font-size: 24px;
     line-height: 1.33;
@@ -156,11 +165,11 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 1.29;
-    letter-spacing: 0;
+    padding-right: 40px;
   }
 
   .favorites-sidebar-quote-text-author {
-    padding-top: 18px;
+    margin-top: 18px;
     color: #f4f4f4;
     font-size: 16px;
     font-weight: 400;
@@ -190,18 +199,22 @@
     margin-left: 75px;
     margin-right: 75px;
     padding-top: 68px;
+    padding-bottom: 87px;
   }
 }
 
 @media (min-width: 1440px) {
+  .favorites {
+    padding-top: 62px;
+    padding-bottom: 151px;
+  }
   .favorites-container {
     flex-direction: row;
     gap: 32px;
   }
 
   .favorites-header {
-    padding-bottom: 44px;
-    padding-top: 70px;
+    margin-bottom: 44px;    
   }
 
   .favorites-sidebar {
@@ -211,12 +224,18 @@
   .favorites-sidebar-sportblock-textblock {
     width: 239px;
   }
-
+  .favorites-sidebar-quote-text {
+    width: 364px;    
+  }
+  .favorites-sidebar-quote-text-quotetext {
+    padding-right: 0;
+  }
   .favorites-exercises-none {
     margin-left: 148px;
     margin-right: 148px;
     padding-top: 102px;
     width: 554px;
+    padding-bottom: 180px;
   }
 }
 
@@ -230,19 +249,20 @@
 }
 .favorites-rating_item {
   width: 335px;
-  height: 141px;
+  height: 160px;
   background-color: rgb(133, 129, 129);
   padding: 16px;
   border-radius: 15px;
   background: #fff;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
 .favorites-rating_item_wrap {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 27px;
+margin-bottom: 16px;
 }
 
 .favorites-rating-title {
@@ -253,8 +273,7 @@
   padding: 5px 7.5px;
   margin-right: 8px;
   font-size: 12px;
-  line-height: auto;
-  letter-spacing: 0%;
+  line-height: normal;
   text-transform: uppercase;
 }
 
@@ -265,6 +284,7 @@
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+  display: flex;
 }
 
 .favorites-icon-bin {
@@ -297,7 +317,7 @@
 .favorites-icon-wrapper {
   display: flex;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .favorites-icon-circle {
@@ -324,10 +344,10 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
-  letter-spacing: 0%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: 240px;
 }
 .favorites-icon-title::first-letter {
   text-transform: capitalize;
@@ -335,7 +355,8 @@
 
 .favorites-workout-description {
   display: flex;
-  gap: 10px;
+  gap: 4px 10px;
+ flex-wrap: wrap;
 }
 
 .favorites-description-light {
@@ -361,7 +382,21 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
-
+@media (min-width: 345px) {
+  .favorites-rating_item {
+    height: 141px;
+  }
+  .favorites-rating_item_wrap {
+    margin-bottom: 27px;
+  }
+  .favorites-icon-wrapper {
+    margin-bottom: 16px;
+  }
+  .favorites-workout-description {
+    gap: 10px;
+   flex-wrap: nowrap;
+  }
+}
 @media (min-width: 768px) {
   .favorites-rating_item {
     width: 344px;
