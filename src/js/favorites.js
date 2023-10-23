@@ -1,31 +1,8 @@
-import svgSprite from "../img/symbol-defs.svg";
 import { serviceQuoteSearch } from './api-service';
 import { openExerciseModal } from './modal-exercise';
-import { serviceWorkoutSearch } from "./api-service";
-import Notiflix from "notiflix";
-
-//***********  Промальовка хедеру  ************//
-(() => {
-  const mobileMenu = document.querySelector('.js-menu-container');
-  const openMenuBtn = document.querySelector('.js-open-menu');
-  const closeMenuBtn = document.querySelector('.js-close-menu');
-
-  const toggleMenu = () => {
-    const isMenuOpen =
-      openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-    openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-    mobileMenu.classList.toggle('is-open');
-  };
-
-  openMenuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu);
-
-  window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-    if (!e.matches) return;
-    mobileMenu.classList.remove('is-open');
-    openMenuBtn.setAttribute('aria-expanded', false);
-  });
-})();
+import { createMarkup } from './markup-favorites';
+import { serviceWorkoutSearch } from './api-service';
+import Notiflix from 'notiflix';
 
 //***********  Промальовка сайдбару  ************//
 const quoteOffTHEDay = document.querySelector(
@@ -71,12 +48,12 @@ function quoteSearch() {
 //***********  Промальовка заглушки   ************//
 const arrFavoriteExercises = JSON.parse(localStorage.getItem('favorites'));
 const messageNone = document.querySelector('.favorites-exercises-none');
-if (arrFavoriteExercises) {
+if (arrFavoriteExercises.length) {
   messageNone.style.display = 'none';
 }
 
 // //***********  ФУНКЦІЯ ДЛЯ додавання сторінок tablet&mobile  ************//
-if (arrFavoriteExercises) {
+if (arrFavoriteExercises.length) {
   let rows;
   if (window.innerWidth < 768) {
     rows = 8;
@@ -99,7 +76,7 @@ if (arrFavoriteExercises) {
       const paginatedData = arrData.slice(start, end);
 
       postsEl.innerHTML = createMarkup(paginatedData);
-  }
+    }
     function displayPagination(arrData, rowPerPage) {
       const pagesCount = Math.ceil(arrData.length / rowPerPage);
       const ulEl = document.querySelector('.favorites-pages-list');
@@ -134,78 +111,42 @@ if (arrFavoriteExercises) {
 }
 
 //***********  Промальовка вправ desktop  ************//
-if (arrFavoriteExercises) {
+if (arrFavoriteExercises.length) {
   if (window.innerWidth >= 1440) {
     const favoritsWorkoutsList = document.querySelector(
-    '.favorites-rating_list');
+      '.favorites-rating_list'
+    );
     favoritsWorkoutsList.innerHTML = createMarkup(arrFavoriteExercises);
   }
 }
 
-function createMarkup(arr) {
-   return arr
-    .map(
-       ({_id, bodyPart, name, target, burnedCalories}) =>
-        `<li class="favorites-rating_item js-workout-card" data-id="${_id}">
-            <div class="favorites-rating_item_wrap">
-              <h2 class="favorites-rating-title">Workout</h2>
-                <button type="button" class="favorites-rating-title-button" data-about="${_id}">
-                  <svg width="16" height="16">
-                    <use class="favorites-icon-bin" id="favorites-icon-bin"
-                      href="${svgSprite}#icon-trash"></use>
-                  </svg>
-                </button>
-                <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
-                    <p class="favorites-workouts-subtext">Start</p>
-                      <svg width="16" height="16">
-                        <use class="favorites-icon-arrow"
-                        href="${svgSprite}#icon-arrow" stroke="black"></use>
-                      </svg>
-                </button>
-            </div>
-            <div class="favorites-icon-wrapper">
-              <div class="favorites-icon-circle">
-                <svg width="20" height="20">
-                  <use class="favorites-icon-runner" 
-                  href="${svgSprite}#icon-running" stroke="black"></use>
-                </svg>
-              </div>
-              <h2 class="favorites-icon-title">${name}</h2>
-            </div>
-            <div class="favorites-workout-description">
-              <p class="favorites-description-light">
-                Burned calories:<span class="favorites-description-dark">${burnedCalories} / 3 min</span>
-              </p>
-              <p class="favorites-description-light">
-                Body part:<span class="favorites-description-dark"
-                  >${bodyPart}</span>
-              </p>
-              <p class="favorites-description-light">
-                Target:<span class="favorites-description-dark">${target}</span>
-              </p>
-            </div>
-        </li>`).join('');
-  }
 //***********  ФУНКЦІЯ ДЛЯ видалення з Локал сторідж  ************//
 if (arrFavoriteExercises.length) {
   const deleteBtn = document.querySelectorAll('#favorites-icon-bin');
 
-  deleteBtn.forEach((btnEl) => {
+  deleteBtn.forEach(btnEl => {
     btnEl.addEventListener('click', deletefromLocalStorage);
-  })
+  });
+  let infexOfEl;
+
+  console.log(arrFavoriteExercises);
 
   function deletefromLocalStorage(event) {
-    console.log(event.target);
-    const currentId = event.target.closest(".js-workout-card").dataset.id;
-    console.log(currentId );
-
+    const currentId = event.target.closest('.js-workout-card').dataset.id;
     arrFavoriteExercises.forEach(el => {
-      if ((el.id = currentId)) {
-        arrFavoriteExercises.splice(el);
-      }
+      infexOfEl = arrFavoriteExercises.findIndex(
+        ({ _id }) => _id === currentId
+      );
     });
+    arrFavoriteExercises.splice(infexOfEl, 1);
+
+    console.log(arrFavoriteExercises);
+    console.log(currentId);
+    console.log(infexOfEl);
+
     localStorage.removeItem('favorites');
     localStorage.setItem('favorites', JSON.stringify(arrFavoriteExercises));
+    location.reload();
   }
 }
 
