@@ -35,8 +35,5 @@ function quoteSearch() {
     }
     
     refs.quoteElement.innerHTML = `${JSON.parse(localStorage.getItem('quote'))}`;
-    
-  refs.authorElement.innerHTML = `${JSON.parse(
-    localStorage.getItem('author')
-  )}`;
+    refs.authorElement.innerHTML = `${JSON.parse(localStorage.getItem('author'))}`;
 }
