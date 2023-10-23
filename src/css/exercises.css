@@ -1,11 +1,13 @@
+.exercises {
+  padding-bottom: 80px;
+}
 .exercises-hide {
   display: none;
 }
-
 .exercises-header {
   font-size: 28px;
-  font-weight: 400;
-  align-items: center;
+  line-height: 1.35;
+  letter-spacing: -0.56px;
   margin-bottom: 20px;
 }
 .exercises-header-div {
@@ -68,8 +70,7 @@
 .exercises-categories-list {
   display: flex;
   gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .exercises-categories-btn {
@@ -156,6 +157,9 @@
 /*? ---------------TABLET----------------- */
 
 @media (min-width: 768px) {
+  .exercises {
+    padding-bottom: 100px;
+  }
   .exercises-header {
     margin-bottom: 0px;
   }
@@ -164,7 +168,15 @@
     align-items: baseline;
     justify-content: space-between;
     margin-top: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
+  }
+  .exercises-main {
+    display: flex;
+    gap: 32px;
+  }
+  .exercises-categories-container {
+    width: 900px;
+    order: 2;
   }
   .exercises-categories-list {
     margin: 0;
@@ -190,14 +202,20 @@
 
 /*? ---------------DESKTOP ----------------*/
 @media (min-width: 1440px) {
+  .exercises {
+    padding-bottom: 132px;
+  }
   .exercises-filter-div {
     margin: 0;
+  }
+  .exercises-pages-list {
+    margin-top: 32px;
   }
   .exercises-upper-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 32px;
+    margin-bottom: 42px;
   }
   .exercises-filter-div {
     gap: 32px;
