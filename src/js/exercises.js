@@ -47,6 +47,7 @@ function handleGoBack(event) {
   if (proceedCategories) return;
   refs.workoutList.innerHTML = '';
   event.target.textContent = 'Exercises';
+  event.target.style.cursor = 'text';
   loadingOfCategories();
   refs.headerPoint.classList.toggle('exercises-hide');
   refs.form.classList.toggle('exercises-hide');
@@ -71,6 +72,7 @@ function handleCategoryProceeding(event) {
   refs.headerPoint.textContent = `${
     currentCategoryName.charAt(0).toUpperCase() + currentCategoryName.slice(1)
   }`;
+  refs.header.style.cursor = 'pointer';
   refs.categoriesResult.innerHTML = '';
   perPageMedia = 8;
   if (mediaQueryTablet.matches) {
@@ -160,9 +162,11 @@ function handlePagesChangeForWorkouts(event) {
 }
 
 function handleCategoryChange(event) {
-  if (
-    !event.target.classList.contains('exercises-categories-btn') ||
-    event.target.classList.contains('exercises-current-category')
+  if (event.target === event.currentTarget) {
+    return;
+  } else if (
+    event.target.classList.contains('exercises-current-category') &&
+    proceedCategories
   ) {
     return;
   }
