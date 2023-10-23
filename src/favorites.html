@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <load="partials/header-fav.html" />
+    <load ="partials/header-fav.html" />
 
     <main>
       <section class="favorites">
@@ -115,30 +115,28 @@
                   <li class="favorites-rating_item">
                     <div class="favorites-rating_item_wrap">
                       <h1 class="favorites-rating-title">Workout</h1>
+
                       <button
                         type="button"
                         class="favorites-rating-title-button"
-                        data-about="_id"
+                        data-about="id"
                       >
                         <svg width="16" height="16">
                           <use
                             class="favorites-icon-bin"
+                            id="favorites-icon-bin"
                             href="../img/symbol-defs.svg#icon-trash"
                           ></use>
                         </svg>
                       </button>
-                      <div class="favorites-workout_arrow">
-                        <button type="button" class="favorites-workout-start">
-                          Start
-                        </button>
-                        <svg width="16" height="16">
-                          <use
-                            class="favorites-icon-arrow"
-                            href="../img/symbol-defs.svg#icon-arrow"
-                            stroke="black"
-                          ></use>
-                        </svg>
-                      </div>
+
+                        <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
+                          <p class="favorites-workouts-subtext">Start</p>
+                            <svg width="16" height="16">
+                              <use class="favorites-icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
+                            </svg>
+                      </button>
+
                     </div>
                     <div class="favorites-icon-wrapper">
                       <div class="favorites-icon-circle">
@@ -173,15 +171,15 @@
                 </ul>
               </div> -->
             </div>
-            <div class="favorites-pages">
-              <ul class="favorites-pages-list"></ul>
-            </div>
+          </div>
+          <div class="favorites-pages">
+            <ul class="favorites-pages-list"></ul>
           </div>
         </div>
       </section>
     </main>
 
-    <load="partials/modal.html" />
+    <load ="partials/modal.html" />
     <script type="module" src="/favorites.js"></script>
   </body>
 </html>
