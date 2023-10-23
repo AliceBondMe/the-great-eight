@@ -52,15 +52,19 @@ const openButtons = document.querySelectorAll("[data-modal-open]");
 openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
 refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
+document.addEventListener("keydown", () => {return event.code === "Escape" ? closeExerciseModal() : undefined});
+
 
 export function openExerciseModal(evt) {
+
   refs.exerciseModal.classList.remove("is-hidden");
 
   refs.backdrop.addEventListener("click", closeExerciseModalForBackdrop);
+  document.body.style.overflow = 'hidden';
   
   exerciseId = evt?.target.closest(".js-workout-card").dataset.id ?? exerciseId;
 
-  checkLsForId( exerciseId);
+  checkLsForId(exerciseId);
 
   serviceWorkoutSearch(exerciseId)
     .then(({ _id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity }) => {
@@ -122,18 +126,23 @@ function closeExerciseModal() {
   arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
   idxInLsArray = -1;
   exerciseId = -1;
+  document.body.style.overflow = 'auto';
+
 };
 
 function closeExerciseModalForBackdrop(evt) {
   if (evt.target !== evt.currentTarget) {
     return;
   }
-  refs.exerciseModal.classList.add("is-hidden");
-  refs.addToFavoriteBtn.removeEventListener("click", handlToFavoriteClick);
-  favoriteObj = {};
-  arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
-  idxInLsArray = -1;
-  exerciseId = -1;
+  closeExerciseModal();
+  // refs.exerciseModal.classList.add("is-hidden");
+  // refs.addToFavoriteBtn.removeEventListener("click", handlToFavoriteClick);
+  // favoriteObj = {};
+  // arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
+  // idxInLsArray = -1;
+  // exerciseId = -1;
+  // document.body.style.overflow = 'auto';
+
 };
 
 export function addToFavorite() {
