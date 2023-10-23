@@ -1,5 +1,8 @@
+import svgSprite from "../img/symbol-defs.svg";
 import { serviceQuoteSearch } from './api-service';
 import { openExerciseModal } from './modal-exercise';
+import { serviceWorkoutSearch } from "./api-service";
+import Notiflix from "notiflix";
 
 //***********  Промальовка хедеру  ************//
 (() => {
@@ -88,74 +91,15 @@ if (arrFavoriteExercises) {
     let currentPage = 1;
 
     function displayList(arrData, rowPerPage, page) {
-      const postsEl = document.querySelector('#favorites-container-js');
+      const postsEl = document.querySelector('.favorites-rating_list');
       postsEl.innerHTML = '';
       page--;
       const start = rowPerPage * page;
       const end = start + rowPerPage;
       const paginatedData = arrData.slice(start, end);
-      paginatedData.forEach(el => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('favorites-workout-container');
-        postElement.innerHTML = `<ul class="favorites-rating_list">
-                  <li class="favorites-rating_item">
-                    <div class="favorites-rating_item_wrap">
-                      <h1 class="favorites-rating-title">Workout</h1>
-                      <button
-                        type="button"
-                        class="favorites-rating-title-button"
-                        data-about="${el.id}"
-                      >
-                        <svg width="16" height="16">
-                          <use
-                            class="favorites-icon-bin"
-                            id="favorites-icon-bin"
-                            href="../img/symbol-defs.svg#icon-trash"
-                          ></use>
-                        </svg>
-                      </button>
-                        <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
-                          <p class="favorites-workouts-subtext">Start</p>
-                            <svg width="16" height="16">
-                              <use class="favorites-icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
-                            </svg>
-                      </button>
-                    </div>
-                    <div class="favorites-icon-wrapper">
-                      <div class="favorites-icon-circle">
-                        <svg width="20" height="20">
-                          <use
-                            class="favorites-icon-runner"
-                            href="../img/symbol-defs.svg#icon-running"
-                            stroke="black"
-                          ></use>
-                        </svg>
-                      </div>
-                      <h2 class="favorites-icon-title">${el.name}</h2>
-                    </div>
-                    <div class="favorites-workout-description">
-                      <p class="favorites-description-light">
-                        Burned calories:<span class="favorites-description-dark"
-                          >${el.burnedCalories} / 3 min</span
-                        >
-                      </p>
-                      <p class="favorites-description-light">
-                        Body part:<span class="favorites-description-dark"
-                          >${el.bodyPart}</span
-                        >
-                      </p>
-                      <p class="favorites-description-light">
-                        Target:<span class="favorites-description-dark"
-                          >${el.target}</span
-                        >
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-    `;
-        postsEl.appendChild(postElement);
-      });
-    }
+
+      postsEl.innerHTML = createMarkup(paginatedData);
+  }
     function displayPagination(arrData, rowPerPage) {
       const pagesCount = Math.ceil(arrData.length / rowPerPage);
       const ulEl = document.querySelector('.favorites-pages-list');
@@ -192,86 +136,68 @@ if (arrFavoriteExercises) {
 //***********  Промальовка вправ desktop  ************//
 if (arrFavoriteExercises) {
   if (window.innerWidth >= 1440) {
-    createMarkup(arrFavoriteExercises);
-  }
-
-  const favoritsWorkoutContainer = document.getElementById(
-    'favorites-container-js'
-  );
-
-  function createMarkup(data) {
-    data.forEach(el => {
-      const favoriteExerciseCard = document.createElement('div');
-      favoriteExerciseCard.classList.add('favorites-workout-container');
-      favoriteExerciseCard.innerHTML = `<ul class="favorites-rating_list">
-                  <li class="favorites-rating_item">
-                    <div class="favorites-rating_item_wrap">
-                      <h1 class="favorites-rating-title">Workout</h1>
-                      <button
-                        type="button"
-                        class="favorites-rating-title-button"
-                        data-about="${el.id}"
-                      >
-                        <svg width="16" height="16">
-                          <use
-                            class="favorites-icon-bin"
-                            id="favorites-icon-bin"
-                            href="../img/symbol-defs.svg#icon-trash"
-                          ></use>
-                        </svg>
-                      </button>
-                        <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
-                          <p class="favorites-workouts-subtext">Start</p>
-                            <svg width="16" height="16">
-                              <use class="favorites-icon-arrow" href="../img/symbol-defs.svg#icon-arrow" stroke="black"></use>
-                            </svg>
-                      </button>
-                    </div>
-                    <div class="favorites-icon-wrapper">
-                      <div class="favorites-icon-circle">
-                        <svg width="20" height="20">
-                          <use
-                            class="favorites-icon-runner"
-                            href="../img/symbol-defs.svg#icon-running"
-                            stroke="black"
-                          ></use>
-                        </svg>
-                      </div>
-                      <h2 class="favorites-icon-title">${el.name}</h2>
-                    </div>
-                    <div class="favorites-workout-description">
-                      <p class="favorites-description-light">
-                        Burned calories:<span class="favorites-description-dark"
-                          >${el.burnedCalories} / 3 min</span
-                        >
-                      </p>
-                      <p class="favorites-description-light">
-                        Body part:<span class="favorites-description-dark"
-                          >${el.bodyPart}</span
-                        >
-                      </p>
-                      <p class="favorites-description-light">
-                        Target:<span class="favorites-description-dark"
-                          >${el.target}</span
-                        >
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-    `;
-      favoritsWorkoutContainer.appendChild(favoriteExerciseCard);
-    });
+    const favoritsWorkoutsList = document.querySelector(
+    '.favorites-rating_list');
+    favoritsWorkoutsList.innerHTML = createMarkup(arrFavoriteExercises);
   }
 }
+
+function createMarkup(arr) {
+   return arr
+    .map(
+       ({_id, bodyPart, name, target, burnedCalories}) =>
+        `<li class="favorites-rating_item js-workout-card" data-id="${_id}">
+            <div class="favorites-rating_item_wrap">
+              <h2 class="favorites-rating-title">Workout</h2>
+                <button type="button" class="favorites-rating-title-button" data-about="${_id}">
+                  <svg width="16" height="16">
+                    <use class="favorites-icon-bin" id="favorites-icon-bin"
+                      href="${svgSprite}#icon-trash"></use>
+                  </svg>
+                </button>
+                <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
+                    <p class="favorites-workouts-subtext">Start</p>
+                      <svg width="16" height="16">
+                        <use class="favorites-icon-arrow"
+                        href="${svgSprite}#icon-arrow" stroke="black"></use>
+                      </svg>
+                </button>
+            </div>
+            <div class="favorites-icon-wrapper">
+              <div class="favorites-icon-circle">
+                <svg width="20" height="20">
+                  <use class="favorites-icon-runner" 
+                  href="${svgSprite}#icon-running" stroke="black"></use>
+                </svg>
+              </div>
+              <h2 class="favorites-icon-title">${name}</h2>
+            </div>
+            <div class="favorites-workout-description">
+              <p class="favorites-description-light">
+                Burned calories:<span class="favorites-description-dark">${burnedCalories} / 3 min</span>
+              </p>
+              <p class="favorites-description-light">
+                Body part:<span class="favorites-description-dark"
+                  >${bodyPart}</span>
+              </p>
+              <p class="favorites-description-light">
+                Target:<span class="favorites-description-dark">${target}</span>
+              </p>
+            </div>
+        </li>`).join('');
+  }
 //***********  ФУНКЦІЯ ДЛЯ видалення з Локал сторідж  ************//
-if (arrFavoriteExercises) {
+if (arrFavoriteExercises.length) {
   const deleteBtn = document.querySelectorAll('#favorites-icon-bin');
 
-  deleteBtn.addEventListener('click', deletefromLocalStorage());
+  deleteBtn.forEach((btnEl) => {
+    btnEl.addEventListener('click', deletefromLocalStorage);
+  })
+
   function deletefromLocalStorage(event) {
-    const currentId = event.target
-      .closest('#favorites-icon-bin')
-      .getAttribute('data-about');
+    console.log(event.target);
+    const currentId = event.target.closest(".js-workout-card").dataset.id;
+    console.log(currentId );
 
     arrFavoriteExercises.forEach(el => {
       if ((el.id = currentId)) {
