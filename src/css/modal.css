@@ -281,3 +281,12 @@
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
+  @media screen and (max-width: 767px){
+    .buttons-container {
+      flex-direction: column;
+      gap: 8px;}
+      .modal-favorites-add {
+        width: 216px;
+    }
+
+  }

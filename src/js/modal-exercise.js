@@ -130,9 +130,13 @@ function checkLsForId(exerciseId) {
   idxInLsArray = arrayFromLs.findIndex(({ id }) => id === exerciseId);
   if (idxInLsArray === -1) {
     refs.addToFavoriteBtn.textContent = "Add to favorites";
+    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="./img/symbol-defs.svg#icon-heart"></use></svg>`);
+
     return false;
   } else {
     refs.addToFavoriteBtn.textContent = "Remove from favorites";
+    refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="./img/symbol-defs.svg#icon-trash"></use></svg>`);
+
     return true;
   }
 }
