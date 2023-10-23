@@ -12,8 +12,8 @@ export function createworkoutsMarkup(arr) {
             <div class="workouts-rating">${(Math.round(rating*10)/10).toFixed(1)}</div>
             <div class="workouts-info-stars">
                <div class="workouts-info-items">
-                  <svg width="18" height="18">
-                     <use class="icon-star" 
+                  <svg width="18" height="18" class="icon-star" >
+                     <use
                      href="${svgSprite}#icon-star"></use>
                   </svg>
                </div>
@@ -21,16 +21,16 @@ export function createworkoutsMarkup(arr) {
          </div>
 			<button type="button" data-modal-open class="workouts_arrow-button workouts_arrow">
                Start
-					<svg width="16" height="16">
-						<use class="icon-arrow" 
+					<svg width="16" height="16" class="icon-arrow">
+						<use 
                   href="${svgSprite}#icon-arrow" stroke="black"></use>
 					</svg>
 		</button>
       </div>
       <div class="icon-wrapper">
          <div class="icon-circle">
-            <svg width="20" height="20">
-               <use class="icon-runner" 
+            <svg width="14" height="14" class="icon-runner">
+               <use 
                href="${svgSprite}#icon-running" stroke="black"></use>
             </svg>
          </div>

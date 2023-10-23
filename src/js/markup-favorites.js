@@ -8,23 +8,23 @@ export function createMarkup(arr) {
             <div class="favorites-rating_item_wrap">
               <h2 class="favorites-rating-title">Workout</h2>
                 <button type="button" class="favorites-rating-title-button">
-                  <svg width="16" height="16">
-                    <use class="favorites-icon-bin" id="favorites-icon-bin"
+                  <svg width="16" height="16" class="favorites-icon-bin">
+                    <use id="favorites-icon-bin"
                       href="${svgSprite}#icon-trash"></use>
                   </svg>
                 </button>
                 <button type="button" data-modal-open class="favorites-workouts-arrow-button favorites-workouts-arrow">
                     <p class="favorites-workouts-subtext">Start</p>
-                      <svg width="16" height="16">
-                        <use class="favorites-icon-arrow"
+                      <svg width="16" height="16" class="favorites-icon-arrow">
+                        <use
                         href="${svgSprite}#icon-arrow" stroke="black"></use>
                       </svg>
                 </button>
             </div>
             <div class="favorites-icon-wrapper">
               <div class="favorites-icon-circle">
-                <svg width="20" height="20">
-                  <use class="favorites-icon-runner" 
+                <svg width="14" height="14" class="favorites-icon-runner">
+                  <use 
                   href="${svgSprite}#icon-running" stroke="black"></use>
                 </svg>
               </div>
