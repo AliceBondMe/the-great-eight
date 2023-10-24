@@ -60,7 +60,7 @@
   position: absolute;
   background: transparent;
   border: none;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   right: 11px;
   padding: 0;
@@ -193,6 +193,9 @@
     margin-top: 0;
   }
   .exercises-form-submit-btn {
+    top: 50%;
+  }
+  .exercises-form-reset-btn {
     top: 50%;
   }
   .exercises-categories-btn {

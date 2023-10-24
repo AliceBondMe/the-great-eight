@@ -64,7 +64,10 @@ function handleCategoryProceeding(event) {
   currentCategoryName = event.target
     .closest('.categories-photo-container')
     .getAttribute('data-categories-id-js');
-
+  if (refs.form.elements[0].value === '') {
+    refs.form.elements[1].classList.remove('exercises-hide');
+    refs.form.elements[2].classList.add('exercises-hide');
+  }
   refs.form.classList.toggle('exercises-hide');
   refs.workoutList.classList.toggle('exercises-hide');
   refs.header.textContent = `Exercises /`;
@@ -358,6 +361,7 @@ function loadingOfCategories(curPage = 1) {
     perPageMedia = 9;
   }
 
+  refs.form.elements[0].value = '';
   categoriesItems.map(el => {
     if (el.firstElementChild.classList.contains('exercises-current-category')) {
       disableListOfEl(categoriesItems, true);
@@ -413,7 +417,10 @@ function handleResetBtnHideout(event) {
         disableListOfEl([...refs.categoriesList.children], false);
         disableListOfEl([...refs.pagesList.children], false);
       });
+    return;
   }
+  disableListOfEl([...refs.categoriesList.children], false);
+  disableListOfEl([...refs.pagesList.children], false);
 }
 
 function handleInputFocus(event) {
