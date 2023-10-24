@@ -155,7 +155,7 @@ export function removeFromFavorite() {
   arrayFromLs.splice(idxInLsArray, 1);
   localStorage.setItem(lsKeyFavorites, JSON.stringify(arrayFromLs));
   checkLsForId(exerciseId);
-  if (window.location.pathname == "/favorites.html") {
+  if (window.location.pathname == "/the-great-eight/favorites.html") {
     location.reload();
   }
 }
