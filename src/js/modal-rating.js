@@ -23,8 +23,8 @@ const notiflixParams = {
 };
 
 const refs = {
-    openRatingModalBtn: document.querySelector("[rating-modal-open]"),
-    closeRatingModalBtn: document.querySelector("[rating-modal-close]"),
+    openRatingModalBtn: document.querySelector("[data-rating-open]"),
+    closeRatingModalBtn: document.querySelector("[data-rating-close]"),
     ratingModal: document.querySelector("[data-rating]"),
     ratingForm: document.querySelector(".rating-form"),
     ratingStars: document.querySelectorAll(".rating-container>input"),
