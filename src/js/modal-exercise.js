@@ -135,14 +135,6 @@ function closeExerciseModalForBackdrop(evt) {
     return;
   }
   closeExerciseModal();
-  // refs.exerciseModal.classList.add("is-hidden");
-  // refs.addToFavoriteBtn.removeEventListener("click", handlToFavoriteClick);
-  // favoriteObj = {};
-  // arrayFromLs = JSON.parse(localStorage.getItem(lsKeyFavorites)) ?? [];
-  // idxInLsArray = -1;
-  // exerciseId = -1;
-  // document.body.style.overflow = 'auto';
-
 };
 
 export function addToFavorite() {
@@ -173,3 +165,25 @@ export function checkLsForId(exerciseId) {
     return true;
   }
 }
+
+
+
+
+window.addEventListener('scroll', toggleScrollToTopBtn);
+function toggleScrollToTopBtn() {
+  if (window.scrollY > 300) {
+    scrollToTopBtn.style.display = 'block';
+  } else {
+    scrollToTopBtn.style.display = 'none';
+  }
+}
+
+scrollToTopBtn.addEventListener('click', scrollToTop);
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+

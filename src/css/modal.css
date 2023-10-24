@@ -199,7 +199,7 @@
 }
 
 .modal-rating-open {
-  width: 133px;
+  padding: 0px 24px;
   height: 42px;
   font-family: Neue Montreal;
   line-height: 1.29;
@@ -283,10 +283,81 @@
   }
   @media screen and (max-width: 767px){
     .buttons-container {
-      /* flex-direction: column; */
-      gap: 6px;}
-      .modal-favorites-add {
-        width: 200px;
-    }
-
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -13px;
+    margin-right: -13px;
   }
+  .modal-favorites-add{
+    padding: 0 14px 0 18px;
+  }
+  .modal-rating-open{
+    padding: 0 18px;
+  }
+  
+ 
+}
+
+
+  .scroll-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: rgba(36, 36, 36, 1);
+  color: rgb(244, 244, 244);
+  border: 2px solid rgba(36, 36, 36, 1);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+.modal-icon-arrow{
+  stroke: rgb(244, 244, 244);
+  width: 33px;
+  height: 33px;
+  transform: rotate(-90deg);
+}
+
+.scroll-top-btn:hover{
+  background-color: rgb(244, 244, 244);
+
+}
+.scroll-top-btn:hover > .modal-icon-arrow{
+  animation: rotation 0.5s infinite linear;
+stroke: rgba(36, 36, 36, 1);
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(-90deg);
+  }
+  25% {
+    transform: rotate(-100deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  75% {
+    transform: rotate(-80deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (max-width: 767px){
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 20px;
+ 
+    border: 1px solid rgba(36, 36, 36, 1);
+    width: 40px;
+    height: 40px;
+  }
+  
+  .modal-icon-arrow{
+    width: 13px;
+    height: 13px;
+  }
+}
