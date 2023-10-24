@@ -6,6 +6,46 @@ import { openExerciseModal } from './modal-exercise.js';
 import Notiflix from 'notiflix';
 import _, { get } from 'lodash';
 
+const notiflixParams = {
+    timeout: 1000,
+    width: '320px',
+    position: 'center-center',
+    fontSize: '16px',
+    cssAnimationStyle: 'from-bottom',
+    backOverlay: true,
+    useIcon: false,
+    failure: {
+        background: '#242424',
+        textColor: '#F4F4F4',
+    },
+    success: {
+        background: '#F4F4F4',
+        textColor: '#242424',
+  },
+    info: {
+        background: '#F4F4F4',
+        textColor: '#242424',
+  },
+  warning: {
+        background: '#242424',
+        textColor: '#F4F4F4',
+    },
+};
+
+const notiflixParamsLong = {
+    timeout: 3000,
+    width: '320px',
+    position: 'center-center',
+    fontSize: '16px',
+    cssAnimationStyle: 'from-bottom',
+    backOverlay: true,
+    useIcon: false,
+    info: {
+        background: '#242424',
+        textColor: '#F4F4F4',
+    },
+};
+
 const refs = {
   header: document.querySelector('.exercises-header'),
   headerPoint: document.querySelector('.exercises-point'),
@@ -104,7 +144,7 @@ function handleCategoryProceeding(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page, execution error is ${error}`
+        `Something went wrong, please reload the page`, notiflixParams
       )
     )
     .finally(() => {
@@ -154,7 +194,7 @@ function handlePagesChangeForWorkouts(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page, execution error is ${error}`
+        `Something went wrong, please reload the page`, notiflixParams
       )
     )
     .finally(() => {
@@ -247,7 +287,7 @@ function handleChangeOfScreen() {
             })
             .catch(error =>
               Notiflix.Notify.failure(
-                `Something went wrong, please reload the page, execution error is ${error}`
+                `Something went wrong, please reload the page`, notiflixParams
               )
             );
         }
@@ -258,7 +298,7 @@ function handleChangeOfScreen() {
       })
       .catch(error =>
         Notiflix.Notify.failure(
-          `Something went wrong, please reload the page, execution error is ${error}`
+          `Something went wrong, please reload the page`, notiflixParams
         )
       )
       .finally(() => {
@@ -296,7 +336,7 @@ function handleChangeOfScreen() {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page, execution error is ${error}`
+        `Something went wrong, please reload the page`, notiflixParams
       )
     )
     .finally(() => {
@@ -342,7 +382,7 @@ function handlePagesChange(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page, execution error is ${error}`
+        `Something went wrong, please reload the page`, notiflixParams
       )
     )
     .finally(() => {
@@ -375,7 +415,7 @@ function loadingOfCategories(curPage = 1) {
         })
         .catch(error =>
           Notiflix.Notify.failure(
-            `Something went wrong, please reload the page, execution error is ${error}`
+            `Something went wrong, please reload the page`, notiflixParams
           )
         )
         .finally(() => {
@@ -410,7 +450,7 @@ function handleResetBtnHideout(event) {
       })
       .catch(error =>
         Notiflix.Notify.failure(
-          `Something went wrong, please reload the page, execution error is ${error}`
+          `Something went wrong, please reload the page`, notiflixParams
         )
       )
       .finally(() => {
@@ -452,7 +492,7 @@ function handleInputLostFocus(event) {
 function handleSearch(event) {
   event.preventDefault();
   if (refs.form.elements[0].value.trim() === '') {
-    Notiflix.Notify.warning('Input is empty, fill in it, pelase!');
+    Notiflix.Notify.warning('Input is empty, fill in it, please!', notiflixParams);
     return;
   }
   disableListOfEl([...refs.categoriesList.children], true);
@@ -469,7 +509,7 @@ function handleSearch(event) {
     .then(data => {
       if (data.results.length === 0) {
         Notiflix.Notify.info(
-          "Unfortunately, we weren't able to find anything related to your request, please try another one!"
+          "Unfortunately, we weren't able to find anything related to your request, please try another one!", notiflixParamsLong
         );
         return;
       }
@@ -483,7 +523,7 @@ function handleSearch(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page, execution error is ${error}`
+        `Something went wrong, please reload the page`, notiflixParams
       )
     )
     .finally(() => {

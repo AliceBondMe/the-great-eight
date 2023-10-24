@@ -19,6 +19,7 @@
 				margin-left: auto;
 	}
 }
+
 .workouts_item {
 	display: flex;
 	flex-direction: column;
@@ -27,6 +28,10 @@
 	background: #FFF;
 	width: 100%;
 	padding: 16px;
+}
+
+.workouts_item:hover {
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .workouts_arrow-button {

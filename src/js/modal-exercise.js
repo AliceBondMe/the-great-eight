@@ -70,7 +70,7 @@ export function openExerciseModal(evt) {
     .then(({ _id, bodyPart, equipment, gifUrl, name, target, description, rating, burnedCalories, time, popularity }) => {
       refs.modal.dataset.id = _id;
       refs.modalExerciseName.textContent = name;
-      refs.modalRatingValue.textContent = (Math.round(rating*10)/10).toFixed(1);
+      refs.modalRatingValue.textContent = rating.toFixed(1);
       refs.modalTarget.textContent = target;
       refs.modalBodyPart.textContent = bodyPart;
       refs.modalEquipment.textContent = equipment;
@@ -79,7 +79,7 @@ export function openExerciseModal(evt) {
       refs.modalDescriptionText.textContent = description;
       refs.modalGif.src = gifUrl;
 
-      const numberOfStars = Math.round(refs.modalRatingValue.textContent);
+      const numberOfStars = Math.round(rating);
       for (let i = 0; i < numberOfStars; i+=1) {
         refs.stars[i].style.fill = "rgba(238, 161, 12, 1)";
       }
@@ -127,7 +127,7 @@ function closeExerciseModal() {
   idxInLsArray = -1;
   exerciseId = -1;
   document.body.style.overflow = 'auto';
-
+  refs.stars.forEach(item => item.style.fill = "rgba(244, 244, 244, 0.2)");
 };
 
 function closeExerciseModalForBackdrop(evt) {
