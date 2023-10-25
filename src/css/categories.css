@@ -65,6 +65,7 @@
     width: 137px;
     height: auto;
     gap: 2px;
+    cursor: pointer;
 }
 
 .categories-info-name {

@@ -7,6 +7,12 @@
     const isMenuOpen = openMenuBtn.getAttribute("aria-expanded") === "true" || false;
     openMenuBtn.setAttribute("aria-expanded", !isMenuOpen);
     mobileMenu.classList.toggle("is-open");
+
+    if (isMenuOpen) {
+      document.body.classList.remove("body-overflow-hidden");
+    } else {
+      document.body.classList.add("body-overflow-hidden");
+    }
   };
 
   openMenuBtn.addEventListener("click", toggleMenu);
