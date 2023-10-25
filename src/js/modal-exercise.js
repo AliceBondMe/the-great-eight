@@ -29,7 +29,6 @@ const refs = {
   modal: document.querySelector(".modal"),
   backdrop: document.querySelector(".js-backdrop"),
   stars: document.querySelectorAll(".modal-icon-star"),
-  ratingValue: document.querySelector(".modal-rating-value"),
   modalExerciseName: document.querySelector(".modal-exercise-name"),
   modalRatingValue: document.querySelector(".modal-rating-value"),
   modalRating: document.querySelector(".modal-rating"),
@@ -40,6 +39,7 @@ const refs = {
   modalBurnedCalories: document.querySelector(".modal-burnedCalories"),
   modalDescriptionText: document.querySelector(".modal-description-text"),
   modalGif: document.querySelector(".modal-gif"),
+  starsOverlay: document.querySelector(".stars-overlay"),
 };
 
 const lsKeyFavorites = "favorites";
@@ -52,7 +52,7 @@ const openButtons = document.querySelectorAll("[data-modal-open]");
 openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
 refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
-document.addEventListener("keydown", () => {return event.code === "Escape" ? closeExerciseModal() : undefined});
+document.addEventListener("keydown", (event) => {return event.code === "Escape" ? closeExerciseModal() : undefined});
 
 
 export function openExerciseModal(evt) {
@@ -79,10 +79,8 @@ export function openExerciseModal(evt) {
       refs.modalDescriptionText.textContent = description;
       refs.modalGif.src = gifUrl;
 
-      const numberOfStars = Math.round(rating);
-      for (let i = 0; i < numberOfStars; i+=1) {
-        refs.stars[i].style.fill = "rgba(238, 161, 12, 1)";
-      }
+      const overlayWidth = (5 - rating) * 18 + Math.ceil(4 - rating) * 2.9;  
+      refs.starsOverlay.style.width = `${overlayWidth}px`;
 
       favoriteObj = {
         _id: _id,
@@ -127,7 +125,7 @@ function closeExerciseModal() {
   idxInLsArray = -1;
   exerciseId = -1;
   document.body.style.overflow = 'auto';
-  refs.stars.forEach(item => item.style.fill = "rgba(244, 244, 244, 0.2)");
+  refs.starsOverlay.style.width = 0;
 };
 
 function closeExerciseModalForBackdrop(evt) {

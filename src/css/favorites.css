@@ -483,6 +483,7 @@
 
 .favorites-pages-button:hover,
 .favorites-pages-button:focus {
+  cursor: pointer;
   color: var(--basic-dark);
   transform: translateY(-3px);
 }

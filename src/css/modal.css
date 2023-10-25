@@ -92,8 +92,24 @@
   .modal-rating{
     padding-top: 10px;
     display: flex;
-    gap: 6px;
-  
+    gap: 6px; 
+  }
+
+  .starring {
+    position: relative;
+  }
+
+  .stars-overlay {
+    background-color: var(--basic-dark);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    @supports (mix-blend-mode: color) {
+        mix-blend-mode: color;
+        opacity: unset;
+      }
   }
 
   .modal-rating-value{
@@ -102,18 +118,21 @@
     line-height: 18px;
   
   }
+
+  .modal-rating-star {
+    width: 18px;
+    height: 18px;
+  }
   
   .modal-icon-star {
     fill: rgba(238, 161, 12, 1);
-    width: 13px;
-    height: 13px;
     padding: 0px;
   }
-  .inactive{
-    fill: rgba(244, 244, 244, 0.2);
-    
-    
+
+  .modal-icon-star:last-of-type {
+    margin-right: 0px;
   }
+
   .modal-description-block{
     padding-bottom: 40px;
   }
