@@ -192,6 +192,7 @@ function handlePagesChangeForWorkouts(event) {
     )
     .then(data => {
       refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
+      hidePages(data.totalPages);
       const openButtons = document.querySelectorAll('[data-modal-open]');
       openButtons.forEach(openModalBtnItem => {
         openModalBtnItem.addEventListener('click', openExerciseModal);
@@ -551,6 +552,12 @@ function createPagesMarkup(
   markLastPageAsCurr = false,
   currentPage = 1
 ) {
+  
+  if (pagesCount === 1) {
+    refs.pagesList.innerHTML = "";
+    return;
+  }
+
   if (markLastPageAsCurr) {
     for (let i = 0; i < pagesCount; i += 1) {
       if (i === pagesCount - 1) {
@@ -610,6 +617,41 @@ function createPagesMarkup(
       }</button></li>`
     );
   }
+
+  
+  hidePages(pagesCount);
+}
+
+function hidePages(pagesCount) {
+  resetPagesVisibility();
+  if (pagesCount >= 5) {
+    const allPagesButtons = document.querySelectorAll(".exercises-pages-button");
+    let activeBtnIdx = [...allPagesButtons].findIndex(btn => btn.classList.contains("exercises-current-page"));
+    const lastPageIdx = allPagesButtons.length - 1;
+
+    allPagesButtons.forEach((btn, index) => {
+      if (index === 0 || index === lastPageIdx || index === activeBtnIdx || index === (activeBtnIdx -1) || index === (activeBtnIdx +1)) {
+        return;
+      } else {
+        btn.closest(".exercises-pages-item").classList.add("hidden");
+      }
+    })
+  }
+  const allPagesButtonsContainers = document.querySelectorAll(".exercises-pages-item");
+  allPagesButtonsContainers.forEach((btn, idx, arr) => {
+    if (arr[idx + 1]?.classList.contains("hidden")) {
+      btn.classList.add("exercises-pages-item-special");
+      }
+  });
+}
+
+
+function resetPagesVisibility() {
+    const allPagesButtonsContainers = document.querySelectorAll(".exercises-pages-item");
+    allPagesButtonsContainers.forEach((btn) => {
+      btn.classList.remove("hidden");
+      btn.classList.remove("exercises-pages-item-special");
+  });
 }
 
 function getCurrentCategory() {
