@@ -9,9 +9,9 @@
 }
 
 .favorites-header {
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   font-size: 28px;
-  color: #242424;
+  color: var(--basic-dark);
   font-weight: 400;
   line-height: 1.36;
 }
@@ -23,7 +23,7 @@
 }
 
 .favorites-sidebar-quote {
-  background-color: #242424;
+  background-color: var(--basic-dark);
   border-radius: 20px;
   padding: 20px;
   display: flex;
@@ -54,7 +54,7 @@
 .favorites-sidebar-quote-text-header {
   display: flex;
   justify-content: space-between;
-  color: #f4f4f4;
+  color: var(--basic-light);
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
@@ -63,13 +63,13 @@
 }
 
 .favorites-sidebar-quote-text-icon {
-  fill: #f4f4f4;
+  fill: var(--basic-light);
   width: 15.43px;
   height: 12.93px;
 }
 
 .favorites-sidebar-quote-text-quotetext {
-  color: #f4f4f4;
+  color: var(--basic-light);
   opacity: 60%;
   font-size: 14px;
   font-weight: 400;
@@ -94,7 +94,7 @@
 }
 
 .favorites-sidebar-sportblock-textblock-icon {
-  fill: #242424;
+  fill: var(--basic-dark);
   margin-bottom: 11px;
 }
 
@@ -135,7 +135,7 @@
   }
 
   .favorites-header {
-    margin-bottom: 32px;    
+    margin-bottom: 32px;
     font-size: 44px;
     line-height: 1.09;
   }
@@ -143,7 +143,7 @@
   .favorites-sidebar {
     gap: 16px;
   }
-  
+
   .favorites-sidebar-quote {
     padding: 40px;
     gap: 16px;
@@ -170,7 +170,7 @@
 
   .favorites-sidebar-quote-text-author {
     margin-top: 18px;
-    color: #f4f4f4;
+    color: var(--basic-light);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
@@ -210,22 +210,23 @@
   }
   .favorites-container {
     flex-direction: row;
-    gap: 32px;
+    gap: unset;
   }
 
   .favorites-header {
-    margin-bottom: 44px;    
+    margin-bottom: 44px;
   }
 
   .favorites-sidebar {
     width: 494px;
+    margin-right: 32px;
   }
 
   .favorites-sidebar-sportblock-textblock {
     width: 239px;
   }
   .favorites-sidebar-quote-text {
-    width: 364px;    
+    width: 364px;
   }
   .favorites-sidebar-quote-text-quotetext {
     padding-right: 0;
@@ -250,26 +251,25 @@
 .favorites-rating_item {
   width: 335px;
   height: 160px;
-  background-color: rgb(133, 129, 129);
   padding: 16px;
   border-radius: 15px;
-  background: #fff;
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .favorites-rating_item_wrap {
   display: inline-flex;
   align-items: center;
-margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .favorites-rating-title {
-  color: #242424;
+  color: var(--basic-dark);
   font-weight: 500;
   border-radius: 15px;
-  border: 1px solid #242424;
+  border: 1px solid var(--basic-dark);
   padding: 5px 7.5px;
   margin-right: 8px;
   font-size: 12px;
@@ -288,8 +288,8 @@ margin-bottom: 16px;
 }
 
 .favorites-icon-bin {
-  fill: #f4f4f4;
-  stroke: #242424;
+  fill: var(--basic-light);
+  stroke: var(--basic-dark);
 }
 
 .favorites-workouts-arrow {
@@ -307,7 +307,7 @@ margin-bottom: 16px;
 }
 
 .favorites-workouts-subtext {
-  color: #242424;
+  color: var(--basic-dark);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
@@ -321,7 +321,7 @@ margin-bottom: 16px;
 }
 
 .favorites-icon-circle {
-  background-color: black;
+  background-color: var(--basic-dark);
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -331,16 +331,16 @@ margin-bottom: 16px;
 }
 
 .favorites-icon-runner {
-  fill: white;
+  fill: var(--basic-light);
   width: 14px;
   height: 14px;
-  stroke: black;
+  stroke: 242424;
 }
 
 .favorites-icon-title {
   padding-top: 2px;
   padding-bottom: 2px;
-  color: #242424;
+  color: var(--basic-dark);
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
@@ -356,7 +356,7 @@ margin-bottom: 16px;
 .favorites-workout-description {
   display: flex;
   gap: 4px 10px;
- flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .favorites-description-light {
@@ -369,7 +369,7 @@ margin-bottom: 16px;
 }
 
 .favorites-description-dark {
-  color: #242424;
+  color: var(--basic-dark);
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
@@ -394,7 +394,7 @@ margin-bottom: 16px;
   }
   .favorites-workout-description {
     gap: 10px;
-   flex-wrap: nowrap;
+    flex-wrap: nowrap;
   }
 }
 @media (min-width: 768px) {
@@ -425,9 +425,24 @@ margin-bottom: 16px;
     width: 405px;
   }
   .favorites-rating_list {
-    width: 826px;
+    width: 850px;
     max-height: 485px;
     overflow-y: scroll;
+  }
+  .favorites-rating_list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .favorites-rating_list::-webkit-scrollbar-track {
+    margin-left: 16px;
+    background-color: rgba(36, 36, 36, 0.1);
+  }
+
+  .favorites-rating_list::-webkit-scrollbar-thumb {
+    background-color: var(--basic-dark);
+    outline: none;
+    border-radius: 4px;
+    height: 141px;
   }
 }
 
