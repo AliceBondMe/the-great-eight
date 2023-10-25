@@ -52,7 +52,6 @@ const openButtons = document.querySelectorAll("[data-modal-open]");
 openButtons.forEach((openModalBtnItem) => { openModalBtnItem.addEventListener("click", openExerciseModal) }); 
 
 refs.closeExerciseModalBtn.addEventListener("click", closeExerciseModal);
-document.addEventListener("keydown", (event) => {return event.code === "Escape" ? closeExerciseModal() : undefined});
 
 
 export function openExerciseModal(evt) {
@@ -61,6 +60,7 @@ export function openExerciseModal(evt) {
 
   refs.backdrop.addEventListener("click", closeExerciseModalForBackdrop);
   document.body.style.overflow = 'hidden';
+  document.addEventListener("keydown", handleEscape);
   
   exerciseId = evt?.target.closest(".js-workout-card").dataset.id ?? exerciseId;
 
@@ -115,6 +115,7 @@ function handlToFavoriteClick() {
 
 export function closeExerciseModalForRating() {
   refs.exerciseModal.classList.add("is-hidden");
+  document.removeEventListener("keydown", handleEscape);
 };
 
 function closeExerciseModal() {
@@ -162,6 +163,13 @@ export function checkLsForId(exerciseId) {
     refs.addToFavoriteBtn.insertAdjacentHTML("beforeend", `<svg class="modal-icon-heart"><use href="${svgSprite}#icon-trash"></use></svg>`);
     return true;
   }
+}
+
+function handleEscape(event) {
+  if (event.code !== "Escape") {
+    return;
+  }
+  closeExerciseModal();
 }
 
 
