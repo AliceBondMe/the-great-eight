@@ -1,4 +1,4 @@
-import{s as g,a as p,o as S}from"./modal-rating-85dd2c0e.js";function h(t){return t.map(({_id:s,bodyPart:e,name:a,target:c,burnedCalories:d})=>`<li class="favorites-rating_item js-workout-card" data-id="${s}">
+import{s as g,a as p,o as S}from"./modal-rating-647b2e2c.js";function h(t){return t.map(({_id:s,bodyPart:e,name:a,target:c,burnedCalories:d})=>`<li class="favorites-rating_item js-workout-card" data-id="${s}">
             <div class="favorites-rating_item_wrap">
               <h2 class="favorites-rating-title">Workout</h2>
                 <button type="button" class="favorites-rating-title-button">
