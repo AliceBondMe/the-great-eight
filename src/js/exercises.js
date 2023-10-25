@@ -55,6 +55,7 @@ const refs = {
   workoutList: document.querySelector('#workout-list'),
   pagesList: document.querySelector('.exercises-pages-list'),
   inputBtns: document.querySelector('.exercises-input-btns'),
+  loader: document.querySelector(".loader-icon"),
 };
 
 const mediaQueryTablet = window.matchMedia('(min-width: 768px)');
@@ -125,6 +126,8 @@ function handleCategoryProceeding(event) {
   }
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
+
+  refs.loader.classList.remove("hidden");
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
@@ -150,6 +153,7 @@ function handleCategoryProceeding(event) {
     .finally(() => {
       disableListOfEl([...refs.categoriesList.children], false);
       disableListOfEl([...refs.pagesList.children], false);
+      refs.loader.classList.add("hidden");
     });
 }
 
@@ -178,6 +182,7 @@ function handlePagesChangeForWorkouts(event) {
 
   disableListOfEl(listItems, true);
   disableListOfEl([...refs.categoriesList.children], true);
+  
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
@@ -257,6 +262,7 @@ function handleChangeOfScreen() {
     } else {
       perPageMedia = 8;
     }
+
     apiServices
       .serviceExercisesSearch(
         currentCategory,
@@ -406,6 +412,11 @@ function loadingOfCategories(curPage = 1) {
     if (el.firstElementChild.classList.contains('exercises-current-category')) {
       disableListOfEl(categoriesItems, true);
       disableListOfEl([...refs.pagesList.children], true);
+
+      if (refs.categoriesResult.innerHTML.trim() === "") {
+        refs.loader.classList.remove("hidden");
+      };
+      
       apiServices
         .serviceCategoriesSearch(getCurrentCategory(), perPageMedia, curPage)
         .then(data => {
@@ -421,6 +432,7 @@ function loadingOfCategories(curPage = 1) {
         .finally(() => {
           disableListOfEl(categoriesItems, false);
           disableListOfEl([...refs.pagesList.children], false);
+          refs.loader.classList.add("hidden");
         });
     }
   });
@@ -433,6 +445,7 @@ function handleResetBtnHideout(event) {
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
   if (refs.form.elements[0].value.trim() !== '') {
+
     apiServices
       .serviceExercisesSearch(
         getCurrentCategory(),
@@ -498,6 +511,7 @@ function handleSearch(event) {
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
   searchRequest = refs.form.elements[0].value.trim().toLowerCase();
+
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
