@@ -2,6 +2,7 @@
 import { openExerciseModal } from "./modal-exercise";
 import { closeExerciseModalForRating } from "./modal-exercise";
 import { serviceRatingAdd } from "./api-service";
+import { validateEmail } from "./footer-form";
 import Notiflix from "notiflix";
 
 const notiflixParams = {
@@ -40,6 +41,12 @@ function handleSubmit(evt) {
     const workoutId = refs.openRatingModalBtn.closest(".modal").dataset.id;
     const checkedStar = [...refs.ratingStars].find((star) => star.checked);
     const { email, message } = evt.currentTarget.elements;
+
+    if (!validateEmail(email.value.trim())) {
+    Notiflix.Notify.failure('The email must be in format test@gmail.com', notiflixParams);
+    return;
+  }
+
     if (email.value.trim() === "" || message.value.trim() === "" || !checkedStar ) {
         return Notiflix.Notify.failure("All fields must be filled!", notiflixParams);
     }

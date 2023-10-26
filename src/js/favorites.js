@@ -76,10 +76,14 @@ if (arrFavoriteExercises.length) {
       const paginatedData = arrData.slice(start, end);
 
       postsEl.innerHTML = createMarkup(paginatedData);
+      
     }
     function displayPagination(arrData, rowPerPage) {
       const pagesCount = Math.ceil(arrData.length / rowPerPage);
       const ulEl = document.querySelector('.favorites-pages-list');
+      if (pagesCount === 1) {
+        return;
+      }
       for (let i = 0; i < pagesCount; i++) {
         const liEl = displayPaginationBtn(i + 1);
         ulEl.appendChild(liEl);
@@ -97,7 +101,8 @@ if (arrFavoriteExercises.length) {
       liEl.addEventListener('click', () => {
         currentPage = page;
         displayList(arrFavoriteExercises, rows, currentPage);
-
+        deletefromLocalStorageRepeat();
+        openModalFromFavorites();
         let currentItemLi = document.querySelector('li.favorites-current-page');
         currentItemLi.classList.remove('favorites-current-page');
         liEl.classList.add('favorites-current-page');
@@ -121,7 +126,8 @@ if (arrFavoriteExercises.length) {
 }
 
 //***********  ФУНКЦІЯ ДЛЯ видалення з Локал сторідж  ************//
-if (arrFavoriteExercises.length) {
+function deletefromLocalStorageRepeat() {
+  if (arrFavoriteExercises.length) {
   const deleteBtn = document.querySelectorAll('#favorites-icon-bin');
 
   deleteBtn.forEach(btnEl => {
@@ -142,10 +148,17 @@ if (arrFavoriteExercises.length) {
     localStorage.setItem('favorites', JSON.stringify(arrFavoriteExercises));
     location.reload();
   }
-}
+ }
+};
+deletefromLocalStorageRepeat();
 
 //***********  ФУНКЦІЯ ДЛЯ відкриття модалки  ************//
-const openButtons = document.querySelectorAll('[data-modal-open]');
-openButtons.forEach(openModalBtnItem => {
-  openModalBtnItem.addEventListener('click', openExerciseModal);
-});
+function openModalFromFavorites() {
+    const openButtons = document.querySelectorAll('[data-modal-open]');
+  openButtons.forEach(openModalBtnItem => {
+    openModalBtnItem.addEventListener('click', openExerciseModal);
+  });
+};
+
+openModalFromFavorites();
+

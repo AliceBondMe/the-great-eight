@@ -31,8 +31,13 @@ function handleSubmit(event) {
   event.preventDefault();
   const { email } = event.currentTarget.elements;
 
+  if (!validateEmail(email.value.trim())) {
+    Notiflix.Notify.failure('The email must be in format test@gmail.com', notiflixParams);
+    return;
+  }
+
   const userData = {
-    email: email.value,
+    email: email.value.trim(),
   };
 
   serviceSubscription(userData)
@@ -61,4 +66,9 @@ function handleSubmit(event) {
     }
   })
   .finally(() => refs.form.reset());
+}
+
+export function validateEmail(email) {
+  const template = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return template.test(email);
 }

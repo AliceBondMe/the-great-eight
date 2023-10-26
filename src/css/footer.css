@@ -14,7 +14,47 @@
   display: block;
   margin-bottom: 20px;
   height: 24px;
+  position: relative;
 }
+
+.footer-logo-link:hover {
+  animation: floating 0.5s ease-out infinite alternate;
+}
+
+.footer-logo-link:hover::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  filter: blur(4px);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: animloader 0.5s ease-out infinite alternate;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
 .footer-logo-link-img {
   fill: var(--basic-light);
 }
