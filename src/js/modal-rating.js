@@ -2,7 +2,6 @@
 import { openExerciseModal } from "./modal-exercise";
 import { closeExerciseModalForRating } from "./modal-exercise";
 import { serviceRatingAdd } from "./api-service";
-import { validateEmail } from "./footer-form";
 import Notiflix from "notiflix";
 
 const notiflixParams = {
@@ -82,3 +81,8 @@ function closeRatingModal() {
     refs.ratingModal.classList.add("is-hidden");
     openExerciseModal();
 };
+
+function validateEmail(email) {
+  const template = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return template.test(email);
+}
