@@ -7,43 +7,43 @@ import Notiflix from 'notiflix';
 import _, { get } from 'lodash';
 
 const notiflixParams = {
-    timeout: 1000,
-    width: '320px',
-    position: 'center-center',
-    fontSize: '16px',
-    cssAnimationStyle: 'from-bottom',
-    backOverlay: true,
-    useIcon: false,
-    failure: {
-        background: '#242424',
-        textColor: '#F4F4F4',
-    },
-    success: {
-        background: '#F4F4F4',
-        textColor: '#242424',
+  timeout: 1000,
+  width: '320px',
+  position: 'center-center',
+  fontSize: '16px',
+  cssAnimationStyle: 'from-bottom',
+  backOverlay: true,
+  useIcon: false,
+  failure: {
+    background: '#242424',
+    textColor: '#F4F4F4',
   },
-    info: {
-        background: '#F4F4F4',
-        textColor: '#242424',
+  success: {
+    background: '#F4F4F4',
+    textColor: '#242424',
+  },
+  info: {
+    background: '#F4F4F4',
+    textColor: '#242424',
   },
   warning: {
-        background: '#242424',
-        textColor: '#F4F4F4',
-    },
+    background: '#242424',
+    textColor: '#F4F4F4',
+  },
 };
 
 const notiflixParamsLong = {
-    timeout: 3000,
-    width: '320px',
-    position: 'center-center',
-    fontSize: '16px',
-    cssAnimationStyle: 'from-bottom',
-    backOverlay: true,
-    useIcon: false,
-    info: {
-        background: '#242424',
-        textColor: '#F4F4F4',
-    },
+  timeout: 3000,
+  width: '320px',
+  position: 'center-center',
+  fontSize: '16px',
+  cssAnimationStyle: 'from-bottom',
+  backOverlay: true,
+  useIcon: false,
+  info: {
+    background: '#242424',
+    textColor: '#F4F4F4',
+  },
 };
 
 const refs = {
@@ -55,7 +55,7 @@ const refs = {
   workoutList: document.querySelector('#workout-list'),
   pagesList: document.querySelector('.exercises-pages-list'),
   inputBtns: document.querySelector('.exercises-input-btns'),
-  loader: document.querySelector(".loader-icon"),
+  loader: document.querySelector('.loader-icon'),
 };
 
 const mediaQueryTablet = window.matchMedia('(min-width: 768px)');
@@ -72,8 +72,12 @@ mediaQueryTablet.addListener(handleChangeOfScreen);
 refs.form.addEventListener('submit', handleSearch);
 refs.form.elements[0].addEventListener('input', _.throttle(handleInput, 500));
 refs.form.elements[0].addEventListener(
+  'input',
+  _.debounce(handleSearchBtnShow, 1000)
+);
+refs.form.elements[0].addEventListener(
   'blur',
-  _.debounce(handleInputLostFocus, 600)
+  _.debounce(handleInputLostFocus, 50)
 );
 refs.form.elements[0].addEventListener('focus', handleInputFocus);
 refs.form.elements[2].addEventListener('click', handleResetBtnHideout);
@@ -127,7 +131,7 @@ function handleCategoryProceeding(event) {
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
 
-  refs.loader.classList.remove("hidden");
+  refs.loader.classList.remove('hidden');
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
@@ -147,13 +151,14 @@ function handleCategoryProceeding(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page`, notiflixParams
+        `Something went wrong, please reload the page`,
+        notiflixParams
       )
     )
     .finally(() => {
       disableListOfEl([...refs.categoriesList.children], false);
       disableListOfEl([...refs.pagesList.children], false);
-      refs.loader.classList.add("hidden");
+      refs.loader.classList.add('hidden');
     });
 }
 
@@ -182,13 +187,14 @@ function handlePagesChangeForWorkouts(event) {
 
   disableListOfEl(listItems, true);
   disableListOfEl([...refs.categoriesList.children], true);
-  
+
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
       currentCategoryName,
       perPageMedia,
-      Number(event.target.textContent)
+      Number(event.target.textContent),
+      searchRequest
     )
     .then(data => {
       refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
@@ -200,7 +206,8 @@ function handlePagesChangeForWorkouts(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page`, notiflixParams
+        `Something went wrong, please reload the page`,
+        notiflixParams
       )
     )
     .finally(() => {
@@ -264,13 +271,18 @@ function handleChangeOfScreen() {
       perPageMedia = 8;
     }
 
+    let tmpSearchRequest = searchRequest;
+    if (typeof searchRequest === 'string') {
+      tmpSearchRequest = tmpSearchRequest.trim();
+    }
+
     apiServices
       .serviceExercisesSearch(
         currentCategory,
         currentCategoryName,
         perPageMedia,
         currentPage,
-        searchRequest.trim()
+        tmpSearchRequest
       )
       .then(data => {
         if (currentPage > data.totalPages) {
@@ -279,7 +291,7 @@ function handleChangeOfScreen() {
               currentCategory,
               perPageMedia,
               data.totalPages,
-              searchRequest.trim()
+              tmpSearchRequest
             )
             .then(({ totalPages, results }) => {
               refs.workoutList.innerHTML = createworkoutsMarkup(results);
@@ -294,7 +306,8 @@ function handleChangeOfScreen() {
             })
             .catch(error =>
               Notiflix.Notify.failure(
-                `Something went wrong, please reload the page`, notiflixParams
+                `Something went wrong, please reload the page`,
+                notiflixParams
               )
             );
         }
@@ -305,7 +318,8 @@ function handleChangeOfScreen() {
       })
       .catch(error =>
         Notiflix.Notify.failure(
-          `Something went wrong, please reload the page`, notiflixParams
+          `Something went wrong, please reload the page`,
+          notiflixParams
         )
       )
       .finally(() => {
@@ -343,7 +357,8 @@ function handleChangeOfScreen() {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page`, notiflixParams
+        `Something went wrong, please reload the page`,
+        notiflixParams
       )
     )
     .finally(() => {
@@ -389,7 +404,8 @@ function handlePagesChange(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page`, notiflixParams
+        `Something went wrong, please reload the page`,
+        notiflixParams
       )
     )
     .finally(() => {
@@ -414,10 +430,10 @@ function loadingOfCategories(curPage = 1) {
       disableListOfEl(categoriesItems, true);
       disableListOfEl([...refs.pagesList.children], true);
 
-      if (refs.categoriesResult.innerHTML.trim() === "") {
-        refs.loader.classList.remove("hidden");
-      };
-      
+      if (refs.categoriesResult.innerHTML.trim() === '') {
+        refs.loader.classList.remove('hidden');
+      }
+
       apiServices
         .serviceCategoriesSearch(getCurrentCategory(), perPageMedia, curPage)
         .then(data => {
@@ -427,13 +443,14 @@ function loadingOfCategories(curPage = 1) {
         })
         .catch(error =>
           Notiflix.Notify.failure(
-            `Something went wrong, please reload the page`, notiflixParams
+            `Something went wrong, please reload the page`,
+            notiflixParams
           )
         )
         .finally(() => {
           disableListOfEl(categoriesItems, false);
           disableListOfEl([...refs.pagesList.children], false);
-          refs.loader.classList.add("hidden");
+          refs.loader.classList.add('hidden');
         });
     }
   });
@@ -442,11 +459,11 @@ function loadingOfCategories(curPage = 1) {
 function handleResetBtnHideout(event) {
   refs.form.elements[1].classList.remove('exercises-hide');
   refs.form.elements[2].classList.add('exercises-hide');
+  searchRequest = 0;
 
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
   if (refs.form.elements[0].value.trim() !== '') {
-
     apiServices
       .serviceExercisesSearch(
         getCurrentCategory(),
@@ -464,7 +481,8 @@ function handleResetBtnHideout(event) {
       })
       .catch(error =>
         Notiflix.Notify.failure(
-          `Something went wrong, please reload the page`, notiflixParams
+          `Something went wrong, please reload the page`,
+          notiflixParams
         )
       )
       .finally(() => {
@@ -477,8 +495,13 @@ function handleResetBtnHideout(event) {
   disableListOfEl([...refs.pagesList.children], false);
 }
 
+function handleSearchBtnShow(event) {
+  refs.form.elements[1].classList.remove('exercises-hide');
+  refs.form.elements[2].classList.add('exercises-hide');
+}
+
 function handleInputFocus(event) {
-  if (event.target.value === '') {
+  if (event.currentTarget.value === '') {
     return;
   }
   refs.form.elements[1].classList.add('exercises-hide');
@@ -486,11 +509,6 @@ function handleInputFocus(event) {
 }
 
 function handleInput(event) {
-  if (event.target.value === '') {
-    refs.form.elements[1].classList.remove('exercises-hide');
-    refs.form.elements[2].classList.add('exercises-hide');
-    return;
-  }
   refs.form.elements[1].classList.add('exercises-hide');
   refs.form.elements[2].classList.remove('exercises-hide');
 }
@@ -506,26 +524,32 @@ function handleInputLostFocus(event) {
 function handleSearch(event) {
   event.preventDefault();
   if (refs.form.elements[0].value.trim() === '') {
-    Notiflix.Notify.warning('Input is empty, fill in it, please!', notiflixParams);
+    Notiflix.Notify.warning(
+      'Input is empty, fill in it, please!',
+      notiflixParams
+    );
+    searchRequest = 0;
     return;
   }
   disableListOfEl([...refs.categoriesList.children], true);
   disableListOfEl([...refs.pagesList.children], true);
-  searchRequest = refs.form.elements[0].value.trim().toLowerCase();
+  searchRequest = refs.form.elements[0].value.toString().trim().toLowerCase();
 
   apiServices
     .serviceExercisesSearch(
       getCurrentCategory(),
       currentCategoryName,
       perPageMedia,
-      getCurrentPage(),
+      1,
       searchRequest
     )
     .then(data => {
       if (data.results.length === 0) {
         Notiflix.Notify.info(
-          "Unfortunately, we weren't able to find anything related to your request, please try another one!", notiflixParamsLong
+          "Unfortunately, we weren't able to find anything related to your request, please try another one!",
+          notiflixParamsLong
         );
+        searchRequest = 0;
         return;
       }
       refs.workoutList.innerHTML = createworkoutsMarkup(data.results);
@@ -538,7 +562,8 @@ function handleSearch(event) {
     })
     .catch(error =>
       Notiflix.Notify.failure(
-        `Something went wrong, please reload the page`, notiflixParams
+        `Something went wrong, please reload the page`,
+        notiflixParams
       )
     )
     .finally(() => {
@@ -552,9 +577,8 @@ function createPagesMarkup(
   markLastPageAsCurr = false,
   currentPage = 1
 ) {
-  
   if (pagesCount === 1) {
-    refs.pagesList.innerHTML = "";
+    refs.pagesList.innerHTML = '';
     return;
   }
 
@@ -618,39 +642,51 @@ function createPagesMarkup(
     );
   }
 
-  
   hidePages(pagesCount);
 }
 
 function hidePages(pagesCount) {
   resetPagesVisibility();
   if (pagesCount >= 5) {
-    const allPagesButtons = document.querySelectorAll(".exercises-pages-button");
-    let activeBtnIdx = [...allPagesButtons].findIndex(btn => btn.classList.contains("exercises-current-page"));
+    const allPagesButtons = document.querySelectorAll(
+      '.exercises-pages-button'
+    );
+    let activeBtnIdx = [...allPagesButtons].findIndex(btn =>
+      btn.classList.contains('exercises-current-page')
+    );
     const lastPageIdx = allPagesButtons.length - 1;
 
     allPagesButtons.forEach((btn, index) => {
-      if (index === 0 || index === lastPageIdx || index === activeBtnIdx || index === (activeBtnIdx -1) || index === (activeBtnIdx +1)) {
+      if (
+        index === 0 ||
+        index === lastPageIdx ||
+        index === activeBtnIdx ||
+        index === activeBtnIdx - 1 ||
+        index === activeBtnIdx + 1
+      ) {
         return;
       } else {
-        btn.closest(".exercises-pages-item").classList.add("hidden");
+        btn.closest('.exercises-pages-item').classList.add('hidden');
       }
-    })
+    });
   }
-  const allPagesButtonsContainers = document.querySelectorAll(".exercises-pages-item");
+  const allPagesButtonsContainers = document.querySelectorAll(
+    '.exercises-pages-item'
+  );
   allPagesButtonsContainers.forEach((btn, idx, arr) => {
-    if (arr[idx + 1]?.classList.contains("hidden")) {
-      btn.classList.add("exercises-pages-item-special");
-      }
+    if (arr[idx + 1]?.classList.contains('hidden')) {
+      btn.classList.add('exercises-pages-item-special');
+    }
   });
 }
 
-
 function resetPagesVisibility() {
-    const allPagesButtonsContainers = document.querySelectorAll(".exercises-pages-item");
-    allPagesButtonsContainers.forEach((btn) => {
-      btn.classList.remove("hidden");
-      btn.classList.remove("exercises-pages-item-special");
+  const allPagesButtonsContainers = document.querySelectorAll(
+    '.exercises-pages-item'
+  );
+  allPagesButtonsContainers.forEach(btn => {
+    btn.classList.remove('hidden');
+    btn.classList.remove('exercises-pages-item-special');
   });
 }
 
