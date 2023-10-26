@@ -509,6 +509,11 @@ function handleInputFocus(event) {
 }
 
 function handleInput(event) {
+  if (event.target.value === '') {
+    refs.form.elements[1].classList.remove('exercises-hide');
+    refs.form.elements[2].classList.add('exercises-hide');
+    return;
+  }
   refs.form.elements[1].classList.add('exercises-hide');
   refs.form.elements[2].classList.remove('exercises-hide');
 }
