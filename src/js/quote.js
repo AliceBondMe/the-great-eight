@@ -37,3 +37,27 @@ function quoteSearch() {
     refs.quoteElement.innerHTML = `${JSON.parse(localStorage.getItem('quote'))}`;
     refs.authorElement.innerHTML = `${JSON.parse(localStorage.getItem('author'))}`;
 }
+
+// 
+
+function adjustQuoteStyles() {
+  const quoteNormText = document.querySelector('.quote-norm-text');
+  
+  
+  if (window.innerWidth < 1439) {
+    if (quoteNormText.clientHeight > 94) {
+      quoteNormText.style.overflowY = 'hidden';
+      quoteNormText.style.scrollBehavior = 'auto';
+      quoteNormText.style.paddingRight = '0';
+    }
+  } else if (window.innerWidth >= 1440) {
+    if (quoteNormText.clientHeight > 163) {
+      quoteNormText.style.overflowY = 'hidden';
+      quoteNormText.style.scrollBehavior = 'auto';
+      quoteNormText.style.paddingRight = '0';
+    }
+  }
+}
+
+window.addEventListener('load', adjustQuoteStyles);
+window.addEventListener('resize', adjustQuoteStyles);
