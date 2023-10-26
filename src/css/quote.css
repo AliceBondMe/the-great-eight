@@ -1,324 +1,330 @@
 ::after,
 ::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 p,
 h1,
 h2,
 h3 {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ul {
-    list-style-type: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
+@media (min-width: 315px) {
+  .quote-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 375px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 80px;
+  }
 
+  .quote-day {
+    position: relative;
+    max-width: 335px;
+    width: 100%;
+    height: 188px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #242424;
+    padding: 20px 20px 20px 72px;
+  }
 
- @media (min-width: 315px) {
+  .quote-day-title {
+    color: #f4f4f4;
+    font-family: Neue Montreal;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
 
-    .quote-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 375px;
-        width: 100%;
-        margin: 0 auto;
-        padding-top: 80px;
-    }
+  .quote-day-text {
+    color: rgba(244, 244, 244, 0.6);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 243px;
+    width: 100%;
+    height: 88px;
+  }
 
-    .quote-day {
-        position: relative;
-        max-width: 335px;
-        width: 100%;
-        height: 188px;
-        flex-shrink: 0;
-        border-radius: 20px;
-        background: #242424;
-        ;
-        padding: 20px 20px 20px 72px;
-    }
+  .quote-day-title-author {
+    /* display: inline-block; */
+    color: #f4f4f4;
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 16px;
+  }
 
-    .quote-day-title {
-        color: #F4F4F4;
-        font-family: Neue Montreal;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1;
-       margin-bottom: 6px;
-    }
+  .quote-running-svg-span {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 32px;
+    border-radius: 50px;
+    background: rgba(244, 244, 244, 0.2);
+  }
 
-    .quote-day-text {
-        color: rgba(244, 244, 244, 0.60);
-        font-family: Neue Montreal;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.3;
-        -webkit-line-clamp: 5;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-width: 243px;
-        width: 100%;
-        height: 88px;
-    }
+  .quote-running-svg {
+    fill: #f4f4f4;
+  }
 
-    .quote-day-title-author {
-        /* display: inline-block; */
-        color: #F4F4F4;
-        font-family: Neue Montreal;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.3;
-        margin-top: 16px;
-    }
+  .quote-comma-svg-span {
+    position: absolute;
+    display: block;
+    right: 20px;
+    top: 20px;
+  }
 
-    .quote-running-svg-span {
-        position: absolute;
-        left: 20px;
-        top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 34px;
-        height: 32px;
-        border-radius: 50px;
-        background: rgba(244, 244, 244, 0.20);
+  .quote-comma-svg {
+    fill: #f4f4f4;
+  }
 
-    }
+  .quote-norm {
+    position: relative;
+    max-width: 335px;
+    width: 100%;
+    height: 203px;
+    padding: 20px 20px 20px 70px;
+    border-radius: 20px;
+    background: #fff;
+  }
 
-    .quote-running-svg {
-        fill: #F4F4F4;
-    }
+  .quote-img {
+    max-width: 335px;
+    width: 100%;
+    /* height: 242px; */
+    border-radius: 20px;
+  }
 
-    .quote-comma-svg-span {
-        position: absolute;
-        display: block;
-        right: 20px;
-        top: 20px;
-    }
+  .quote-norm-time {
+    color: #242424;
+    /* font-feature-settings: 'clig' off, 'liga' off; */
+    font-family: Neue Montreal;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+  }
 
-    .quote-comma-svg {
-        fill: #F4F4F4;
-    }
+  .quote-norm-title {
+    color: rgba(36, 36, 36, 0.6);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 4px;
+    margin-bottom: 16px;
+  }
+  .quote-norm-block {
+    height: 94px;
+    overflow: hidden;
+  }
+  .quote-norm-text {
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 
-    .quote-norm {
-        position: relative;
-        max-width: 335px;
-        width: 100%;
-        height: 203px;
-        padding: 20px 20px 20px 70px;
-        border-radius: 20px;
-        background: #FFF;
-    }
+    width: 100%;
+    color: #242424;
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    max-width: 245px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding-right: 10px;
+  }
+  .quote-norm-text::-webkit-scrollbar {
+    width: 8px;
+  }
 
-    .quote-img {
-        max-width: 335px;
-        width: 100%;
-        /* height: 242px; */
-        border-radius: 20px;
+  .quote-norm-text::-webkit-scrollbar-track {
+    margin-left: 20px;
+    background-color: rgba(36, 36, 36, 0.1);
+  }
 
-    }
+  .quote-norm-text::-webkit-scrollbar-thumb {
+    background-color: var(--basic-dark);
+    outline: none;
+    border-radius: 4px;
+    height: 30px;
+  }
 
-    .quote-norm-time {
-        color: #242424;
-        /* font-feature-settings: 'clig' off, 'liga' off; */
-        font-family: Neue Montreal;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1;
-    }
+  .quote-weight-svg-span {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    background: #242424;
+  }
 
-    .quote-norm-title {
-        color: rgba(36, 36, 36, 0.60);
-        font-family: Neue Montreal;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.3;
-        margin-top: 4px;
-        margin-bottom: 16px;
-    }
+  .quote-weight-svg {
+    fill: #f4f4f4;
+  }
 
-    .quote-norm-text {
-        -webkit-line-clamp: 5;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-width: 245px;
-        width: 100%;
-        color: #242424;
-        font-family: Neue Montreal;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.3;
-        height: 94px;
-    }
-
-    .quote-weight-svg-span {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 50px;
-        background: #242424;
-    }
-
-
-    .quote-weight-svg {
-        fill: #F4F4F4
-    }
-
-    .quote-day-title-author {
-        display: inline-block;
-        color: #F4F4F4;
-        font-family: Neue Montreal;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.3;
-        margin-top: 16px;
-    }
-
- }
-
+  .quote-day-title-author {
+    display: inline-block;
+    color: #f4f4f4;
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 16px;
+  }
+}
 
 @media (min-width: 768px) {
-    .quote-container {
-        max-width: 768px;
-        width: 100%;
-        margin: 0 auto;
-        gap: 32px 16px;
-        flex-direction: row;
-        flex-wrap: wrap;
-    
+  .quote-container {
+    max-width: 768px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 32px 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .quote-day {
+    max-width: 400px;
+    min-height: 249px;
+    padding: 40px 40px 40px 90px;
+  }
+  .quote-norm {
+    max-width: 400px;
+    height: 249px;
+    padding: 40px 40px 40px 90px;
+  }
+  .quote-img {
+    max-width: 288px;
+    height: 249px;
+    width: 100%;
+  }
+  .quote-day-text {
+    max-width: 270px;
+  }
+  .quote-day-title-author {
+    margin-top: 18px;
+  }
 
-    }
-    .quote-day {
-        max-width: 400px;
-        min-height: 249px;
-        padding: 40px 40px 40px 90px;
-        }
-    .quote-norm {
-        max-width: 400px;
-        height: 249px;
-        padding: 40px 40px 40px 90px;
-        }
-    .quote-img {
-         max-width: 288px;
-         height: 249px;
-         width: 100%;
-        }
-    .quote-day-text{
-         max-width: 270px;
-        }
-    .quote-day-title-author{
-        margin-top: 18px;
-    }
-
-    .quote-norm-text{
-        max-width: 270px
-        }
-    .quote-running-svg-span{
-        transform: translate(0%, -20%);
-        left: 40px;
-        top: 40px;
-        }
-    .quote-comma-svg-span{
-        right: 40px;
-        top: 40px;
-        }
-    .quote-weight-svg-span{
-        transform: translate(0%, -20%);
-        left: 40px;
-        top: 40px;       
-    
-        }
-
-        }
-
+  .quote-norm-text {
+    max-width: 270px;
+  }
+  .quote-running-svg-span {
+    transform: translate(0%, -20%);
+    left: 40px;
+    top: 40px;
+  }
+  .quote-comma-svg-span {
+    right: 40px;
+    top: 40px;
+  }
+  .quote-weight-svg-span {
+    transform: translate(0%, -20%);
+    left: 40px;
+    top: 40px;
+  }
+}
 
 @media (min-width: 1440px) {
-    .quote-container {
-        max-width: 444px;
-        width: 100%;
-        margin-left: auto;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        gap: 32px;
-        padding-top: 0;
-          
-    }
-    .quote-day {
-        max-width: 444px;
-        min-height: 230px;
-        padding: 40px 40px 40px 90px;
-        }
-    .quote-norm {
-        max-width: 444px;
-        height: 315px;
-        padding: 40px 40px 40px 90px;
-        }
-    .quote-img {
-        max-width: 444px;
-        height: 242px;
-        width: 100%;
-        }
-    .quote-day-text{
-        max-width: 314px;
-        }
-    .quote-day-title-author {
-        margin-top: 18px;
-        }
-    .quote-norm-text{
-        max-width: 314px;
-        display: inline-block;
-        height: 163px;
-        }
-    .quote-running-svg-span{
-        transform: translate(0%, -20%);
-        left: 40px;
-        top: 40px;
-        }
-    .quote-comma-svg-span{
-        right: 40px;
-        top: 40px;
-        }
-    .quote-weight-svg-span{
-        transform: translate(0%, -20%);
-        left: 41px;
-        top: 40px;
-        }
-
+  .quote-container {
+    max-width: 444px;
+    width: 100%;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 0;
+  }
+  .quote-day {
+    max-width: 444px;
+    min-height: 230px;
+    padding: 40px 40px 40px 90px;
+  }
+  .quote-norm {
+    max-width: 444px;
+    height: 315px;
+    padding: 40px 40px 40px 90px;
+  }
+  .quote-img {
+    max-width: 444px;
+    height: 242px;
+    width: 100%;
+  }
+  .quote-day-text {
+    max-width: 314px;
+  }
+  .quote-day-title-author {
+    margin-top: 18px;
+  }
+  .quote-norm-block {
+    height: 163px;
+  }
+  .quote-norm-text {
+    max-width: 314px;
+    display: inline-block;
+  }
+  .quote-running-svg-span {
+    transform: translate(0%, -20%);
+    left: 40px;
+    top: 40px;
+  }
+  .quote-comma-svg-span {
+    right: 40px;
+    top: 40px;
+  }
+  .quote-weight-svg-span {
+    transform: translate(0%, -20%);
+    left: 41px;
+    top: 40px;
+  }
 }
